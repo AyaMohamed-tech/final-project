@@ -8,7 +8,18 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Create product</h4>
-                  {!!Form::open(['action' => 'AdminController@addproduct', 'class' => 'cmxform','method' => 'POST','id' => 'commentForm'])!!}
+                  @if(Session::has('status'))
+                      <div class="alert alert-success">
+                            {{Session::get('status')}}
+                      </div>
+                  @endif
+
+                  @if(Session::has('status1'))
+                      <div class="alert alert-danger">
+                            {{Session::get('status1')}}
+                      </div>
+                  @endif
+                  {!!Form::open(['action' => 'ProductController@saveproduct', 'class' => 'cmxform','method' => 'POST','id' => 'commentForm','enctype' => 'multipart/form-data'])!!}
                   {{csrf_field()}}
                       <div class="form-group">
                         {{Form::label('','Product Name',['for' => 'cname'])}}
@@ -23,16 +34,11 @@
                       </div>
                       <div class="form-group">
                       {{Form::label('','Product category',['for' => 'cname'])}}
-                      {{Form::select('size', ['L' => 'Large', 'S' => 'Small'], null, ['placeholder' => 'Select category','class' => 'form-control'])}}
+                      {{Form::select('product_category', $categories, null, ['placeholder' => 'Select category','class' => 'form-control'])}}
                       </div>
                       <div class="form-group">
                       {{Form::label('','Product image',['for' => 'cname'])}}
                       {{Form::file('product_image',['class' => 'form-control'])}} 
-                      </div>
-                      <div class="form-group">
-                      {{Form::label('','Product status',['for' => 'cname'])}}
-                      {{Form::checkbox('product_status','','true',['class' => 'form-control'])}}
-                      
                       </div>
 
                       {{Form::submit('Save',['class' => 'btn btn-primary'])}}

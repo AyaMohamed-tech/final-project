@@ -37,8 +37,9 @@ Route::post('/updatecategory','CategoryController@updatecategory');
 Route::get('/delete/{id}','CategoryController@delete');
 
 
-Route::get('/addproduct','ProductController@addproduct');
-Route::get('/products','ProductController@products');
+Route::get('/addproduct', 'ProductController@addproduct');
+Route::get('/products', 'ProductController@products');
+Route::post('/saveproduct', 'ProductController@saveproduct');
 
 
 Route::get('/addslider','SliderController@addslider');
