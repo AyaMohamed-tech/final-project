@@ -53,9 +53,11 @@
                                                 Delete
                                             </a>
                                             @if ($product->status == 1)
-                                                <button class="btn btn-outline-warning">Unactivate</button>
+                                                <a href="/unactivateproduct/{{ $product->id }}"
+                                                    class="btn btn-outline-warning">Unactivate</a>
                                             @else
-                                                <button class="btn btn-outline-success">activate</button>
+                                                <a href="/activateproduct/{{ $product->id }}"
+                                                    class="btn btn-outline-success">activate</a>
                                             @endif
                                         </td>
                                     </tr>

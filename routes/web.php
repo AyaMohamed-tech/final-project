@@ -43,6 +43,8 @@ Route::post('/saveproduct', 'ProductController@saveproduct');
 Route::get('/edit_product/{id}', 'ProductController@editproduct');
 Route::post('/updateproduct', 'ProductController@updateproduct');
 Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
+Route::get('/activateproduct/{id}', 'ProductController@activateproduct');
+Route::get('/unactivateproduct/{id}', 'ProductController@unactivateproduct');
 
 Route::get('/addslider', 'SliderController@addslider');
 Route::get('/sliders', 'SliderController@sliders');

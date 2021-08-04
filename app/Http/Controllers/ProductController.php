@@ -16,6 +16,7 @@ class ProductController extends Controller
         $categories = Category::All()->pluck('category_name', 'category_name');
         return view('admin.addproduct')->with('categories', $categories);
     }
+
     public function saveproduct(Request $request)
     {
 
@@ -68,16 +69,13 @@ class ProductController extends Controller
         return view('admin.products')->with('products', $products);
     }
 
-
     public function editproduct($id)
     {
-
         $categories = Category::All()->pluck('category_name', 'category_name');
-
         $product = product::find($id);
-
         return view('admin.editproduct')->with('product', $product)->with('categories', $categories);
     }
+
     public function updateproduct(Request $request)
     {
         $this->validate($request, [
@@ -105,10 +103,30 @@ class ProductController extends Controller
         $product->update();
         return redirect('/products')->with('status', 'The ' . $request->input('product_name') . ' Product has been Updated Successfuly');
     }
+
     public function deleteproduct($id)
     {
         $product = Product::find($id);
+        if ($product->product_image != 'noimage.jpg') {
+            Storage::delete('/public/product_images/' . $product->product_image);
+        }
         $product->delete();
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product has been Deleted Successfuly');
+    }
+
+    public function activateproduct($id)
+    {
+        $product = Product::find($id);
+        $product->status = 1;
+        $product->update();
+        return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Activated Successfuly');
+    }
+
+    public function unactivateproduct($id)
+    {
+        $product = Product::find($id);
+        $product->status = 0;
+        $product->update();
+        return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
     }
 }
