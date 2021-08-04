@@ -65,8 +65,17 @@ class ProductController extends Controller
 
     public function products()
     {
- 
-        return view('admin.products');
+        $products = product :: get();
+        return view('admin.products')->with ('products' , $products);
     }
     
+
+    public function editproduct($id){
+
+        $categories = Category::All()->pluck('category_name' , 'category_name');
+
+        $product = product ::find($id);
+
+        return view('admin.editproduct')->with('product' ,$product)->with('categories' , $categories);
+    }
 }

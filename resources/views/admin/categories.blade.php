@@ -31,7 +31,7 @@
                             <td>{{$increment}}</td>
                             <td>{{$category->category_name}}</td>
                             <td>
-                              <button class="btn btn-outline-primary" onclick="window.location = '{{url('/edit/'.$category->id)}}'">Edit</button>
+                              <button class="btn btn-outline-primary" onclick="window.location = '{{url('/edit_category/'.$category->id)}}'">Edit</button>
 
                               <a class="btn btn-outline-danger" id="delete" 
                               href="/delete/{{$category->id}}">Delete</a>

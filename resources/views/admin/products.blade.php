@@ -5,6 +5,7 @@
 @endsection
 @section('content')
 
+{{Form::hidden('',$increment=1)}}
 <div class="card">
             <div class="card-body">
               <h4 class="card-title">Products</h4>
@@ -15,156 +16,48 @@
                       <thead>
                         <tr>
                             <th>Order #</th>
-                            <th>Purchased On</th>
-                            <th>Customer</th>
+                            <th>image</th>
+                            <th>product name</th>
                             <th>Ship to</th>
-                            <th>Base Price</th>
-                            <th>Purchased Price</th>
+                            <th>price</th>
+                            <th>Categories</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($products as $product)
                         <tr>
-                            <td>1</td>
-                            <td>2012/08/03</td>
-                            <td>Edinburgh</td>
-                            <td>New York</td>
-                            <td>$1500</td>
-                            <td>$3200</td>
+                            <td>{{$increment}}</td>
+                            <td><img src="/storage/product_images/{{$product->product_image}}" alt=""></td>
+                            <td>{{$product->product_name}}</td>
+                            <td>{{$product->product_price}}</td>
+                            <td>{{$product->product_category}}</td>
+                            @if ($product->status ==1)
+
                             <td>
-                              <label class="badge badge-info">On hold</label>
+                              <label class="badge badge-success">Activated</label>
                             </td>
+
+                            @else
+
+                            
                             <td>
-                              <button class="btn btn-outline-primary">View</button>
+                              <label class="badge badge-danger">Unactivated</label>
+                            </td>
+                           @endif
+                            <td>
+                              <a class="btn btn-outline-primary" onclick="window.location = '{{url('/edit_product/'.$product->id)}}' ">Edit</a>
+                              <a href =" " class= "btn btn-outline-danger">delete</a>
+                              @if ($product->status ==1)
+                              <button class ="btn btn-outline-warning">Unactivate</button>
+                              @else
+                              <button class ="btn btn-outline-success">activate</button>
+                              @endif
                             </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>2015/04/01</td>
-                            <td>Doe</td>
-                            <td>Brazil</td>
-                            <td>$4500</td>
-                            <td>$7500</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>2010/11/21</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>2016/01/12</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>2017/12/28</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>2000/10/30</td>
-                            <td>Sam</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-info">On-hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>2011/03/11</td>
-                            <td>Cris</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>8</td>
-                            <td>2015/06/25</td>
-                            <td>Tim</td>
-                            <td>Italy</td>
-                            <td>$6300</td>
-                            <td>$2100</td>
-                            <td>
-                              <label class="badge badge-info">On-hold</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>9</td>
-                            <td>2016/11/12</td>
-                            <td>John</td>
-                            <td>Tokyo</td>
-                            <td>$2100</td>
-                            <td>$6300</td>
-                            <td>
-                              <label class="badge badge-success">Closed</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>10</td>
-                            <td>2003/12/26</td>
-                            <td>Tom</td>
-                            <td>Germany</td>
-                            <td>$1100</td>
-                            <td>$2300</td>
-                            <td>
-                              <label class="badge badge-danger">Pending</label>
-                            </td>
-                            <td>
-                              <button class="btn btn-outline-primary">View</button>
-                            </td>
-                        </tr>
+                        {{Form::hidden('',$increment=$increment+1)}}
+                       @endforeach
                       </tbody>
                     </table>
                   </div>
