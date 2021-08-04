@@ -18,7 +18,6 @@
                             <th>Order #</th>
                             <th>image</th>
                             <th>product name</th>
-                            <th>Ship to</th>
                             <th>price</th>
                             <th>Categories</th>
                             <th>Status</th>
