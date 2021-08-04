@@ -105,4 +105,10 @@ class ProductController extends Controller
         $product->update();
         return redirect('/products')->with('status', 'The ' . $request->input('product_name') . ' Product has been Updated Successfuly');
     }
+    public function deleteproduct($id)
+    {
+        $product = Product::find($id);
+        $product->delete();
+        return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product has been Deleted Successfuly');
+    }
 }
