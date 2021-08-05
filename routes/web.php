@@ -17,34 +17,35 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 }); */
 
-Route::get('/', 'ClientController@home');
-Route::get('/shop', 'ClientController@shop');
-Route::get('/cart', 'ClientController@cart');
-Route::get('/checkout', 'ClientController@checkout');
-Route::get('/login', 'ClientController@login');
-Route::get('/signup', 'ClientController@signup');
+Route::get('/','ClientController@home');
+Route::get('/shop','ClientController@shop');
+Route::get('/cart','ClientController@cart');
+Route::get('/checkout','ClientController@checkout');
+Route::get('/login','ClientController@login');
+Route::get('/signup','ClientController@signup');
 
 
-Route::get('/admin', 'AdminController@dashboard');
-Route::get('/orders', 'AdminController@orders');
+Route::get('/admin','AdminController@dashboard');
+Route::get('/orders','AdminController@orders');
 
 
-Route::get('/addcategory', 'CategoryController@addcategory');
-Route::post('/savecategory', 'CategoryController@savecategory');
-Route::get('/categories', 'CategoryController@categories');
-Route::get('/edit_category/{id}', 'CategoryController@edit');
-Route::post('/updatecategory', 'CategoryController@updatecategory');
-Route::get('/delete/{id}', 'CategoryController@delete');
+Route::get('/addcategory','CategoryController@addcategory');
+Route::post('/savecategory','CategoryController@savecategory');
+Route::get('/categories','CategoryController@categories');
+Route::get('/edit_category/{id}','CategoryController@edit');
+Route::post('/updatecategory','CategoryController@updatecategory');
+Route::get('/delete/{id}','CategoryController@delete');
+Route::get('/view_by_cat/{name}','CategoryController@view_by_cat');
 
 
-Route::get('/addproduct', 'ProductController@addproduct');
-Route::get('/products', 'ProductController@products');
-Route::post('/saveproduct', 'ProductController@saveproduct');
-Route::get('/edit_product/{id}', 'ProductController@editproduct');
-Route::post('/updateproduct', 'ProductController@updateproduct');
-Route::get('/deleteproduct/{id}', 'ProductController@deleteproduct');
-Route::get('/activateproduct/{id}', 'ProductController@activateproduct');
-Route::get('/unactivateproduct/{id}', 'ProductController@unactivateproduct');
+Route::get('/addproduct','ProductController@addproduct');
+Route::get('/products','ProductController@products');
+Route::post('/saveproduct','ProductController@saveproduct');
+Route::get('/edit_product/{id}','ProductController@editproduct');
+Route::post('/updateproduct','ProductController@updateproduct');
+Route::get('/delete_product/{id}','ProductController@delete_product');
+Route::get('/activate_product/{id}','ProductController@activate_product');
+Route::get('/unactivate_product/{id}','ProductController@unactivate_product');
 
 
 Route::get('/sliders','SliderController@sliders');
@@ -55,3 +56,8 @@ Route::post('/updateslider','SliderController@updateslider');
 Route::get('/delete_slider/{id}','SliderController@delete_slider');
 Route::get('/unactivate_slider/{id}','SliderController@unactivate_slider');
 Route::get('/activate_slider/{id}','SliderController@activate_slider');
+
+
+
+
+
