@@ -57,7 +57,7 @@ Cart
 									<div class="input-group mb-3">
 										<input type="number" name="quantity" class="quantity form-control input-number" value="{{$product['qty']}}" min="1" max="100">
 
-										<input type="hidden" name="quantity" class="quantity form-control input-number" value="{{$product['product_id']}}" min="1" max="100">
+										<input type="hidden" name="id" class="quantity form-control input-number" value="{{$product['product_id']}}" min="1" max="100">
 
 									</div>
 								{{Form::submit('Update',['class' => 'btn btn-success'])}}
