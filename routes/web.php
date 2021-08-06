@@ -25,6 +25,8 @@ Route::get('/login','ClientController@login');
 Route::get('/signup','ClientController@signup');
 Route::post('/updateqty','ClientController@updateqty');
 Route::get('/removeitem/{id}','ClientController@removeitem');
+Route::post('postcheckout','ClientController@postcheckout');
+
 
 
 

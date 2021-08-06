@@ -67,6 +67,9 @@ class ClientController extends Controller
         return view('client.shop')->with('products',$products)->with('categories',$categories);
     }
     public function checkout(){
+        if(!Session::has('cart')){
+            return redirect ('/cart');
+        }
         return view('client.checkout');
     }
     public function login(){
