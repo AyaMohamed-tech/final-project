@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Slider;
 use App\Product;
 use App\Category;
+use App\Cart;
+use Session;
+
 
 class ClientController extends Controller
 {
@@ -17,8 +20,40 @@ class ClientController extends Controller
         return view('client.home')->with('sliders',$sliders)->with('products',$products);
     }
     public function cart(){
-        return view('client.cart');
+        if(!Session::has('cart')){
+            return view('client.cart');
+        }
+
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        return view('client.cart', ['products' => $cart->items]);
     }
+    public function updateqty(Request $request){
+        //print('the product id is '.$request->id.' And the product qty is '.$request->quantity);
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->updateQty($request->id, $request->quantity);
+        Session::put('cart', $cart);
+
+        //dd(Session::get('cart'));
+        return redirect('/cart');
+    }
+    public function removeitem($id){
+        $oldCart = Session::has('cart')? Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+       
+        if(count($cart->items) > 0){
+            Session::put('cart', $cart);
+        }
+        else{
+            Session::forget('cart');
+        }
+
+        //dd(Session::get('cart'));
+        return redirect('/cart');
+    }
+
     public function shop(){
         //===== get all categories in Category model =========
         $categories = Category::get();
