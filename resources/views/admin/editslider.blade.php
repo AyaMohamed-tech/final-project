@@ -13,7 +13,10 @@ Edite Slider
                              <h3 class="card-title">Edite Slider</h3>
                              {!!Form::open(['action' => 'SliderController@updateslider' ,'class' => 'cmxform' ,'method' => 'POST','id' => 'commentForm' ])!!}
                              {{csrf_field()}}
+
                            <div class="form-group">
+                           {{Form::hidden('id', $slider->id)}}
+
                              {{Form::label( '' ,' Dicreption one',['for' => 'cname'] )}}
                              {{Form::text( 'description_one' ,$slider->description1,['class' => 'form-control' ,'minlength' => '2' ])}}
                            </div>

@@ -67,11 +67,12 @@ class SliderController extends Controller
                        $this->validate($request ,
                         [
                         'description_one' => 'required' ,
-                        'description_two' => 'required',
-                        'slider_image' => 'required'
+                        'description_two' => 'required'
+                       
                     ]);
-                    $slider->description1=($request->input('description_one'));
-                    $slider->description2=($request->input('description_two'));
+                    $slider=Slider::find($request->input('id'));
+                    $slider->description1=$request->input('description_one');   
+                    $slider->description2=$request->input('description_two');
                     if($request->hasFile('slider_image')){
                         // 1 ====== git file from req =======     File['name']   
                         $fileNameWithExt=$request->file('slider_image')->getClientOriginalName();
