@@ -72,6 +72,19 @@ class ClientController extends Controller
         }
         return view('client.checkout');
     }
+
+    public function postcheckout(){
+        if(!Session::has('cart')){
+            return redirect ('/cart');
+        }
+        return view('client.checkout');
+    }
+
+
+
+
+
+
     public function login(){
         return view('client.login');
     }
