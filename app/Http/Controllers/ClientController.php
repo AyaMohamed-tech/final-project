@@ -14,9 +14,7 @@ use App\Client;
 use Stripe\Charge;
 use Stripe\Stripe;
 use App\Order;
-
-// use Session;
-
+use DB;
 
 class ClientController extends Controller
 {
@@ -41,20 +39,15 @@ class ClientController extends Controller
 
     public function updateqty(Request $request)
     {
-
-        //print('the product id is '.$request->id.' And the product qty is '.$request->quantity);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->updateQty($request->id, $request->quantity);
         Session::put('cart', $cart);
-
-        //dd(Session::get('cart'));
         return redirect('/cart');
     }
 
     public function removeitem($id)
     {
-
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->removeItem($id);
@@ -64,10 +57,9 @@ class ClientController extends Controller
         } else {
             Session::forget('cart');
         }
-
-        //dd(Session::get('cart'));
         return redirect('/cart');
     }
+
     public function shop()
     {
         //===== get all categories in Category model =========
@@ -76,6 +68,7 @@ class ClientController extends Controller
         $products = Product::get();
         return view('client.shop')->with('products', $products)->with('categories', $categories);
     }
+
     public function checkout()
     {
         if (!Session::has('cart')) {
@@ -94,7 +87,6 @@ class ClientController extends Controller
         Stripe::setApiKey('sk_test_51JLs9OEITolXhvOBPfGxQWcSZ6sBfD9RRhpCB3o4VWmwespXvXSpCiZgZmtztB4u3qTSfKg3H9YbDcQo4c8bxsrK00ZglvFGqc');
 
         try {
-
             $charge = Charge::create(array(
                 "amount" => $cart->totalPrice * 100,
                 "currency" => "usd",
@@ -102,16 +94,12 @@ class ClientController extends Controller
                 "description" => "Test Charge"
             ));
 
-$order = new Order();
-
-$order->name = $request->input('name');
-$order->adress = $request->input('adress');
-$order->cart = serialize($cart);
-$order->payment_id = $charge->id ;
-
-$order->save();
-
-
+            $order = new Order();
+            $order->name = $request->input('name');
+            $order->address = $request->input('address');
+            $order->cart = serialize($cart);
+            $order->payment_id = $charge->id;
+            $order->save();
         } catch (\Exception $e) {
             Session::put('error', $e->getMessage());
             return redirect('/checkout');
