@@ -3,9 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 use App\Product;
 use App\Category;
-use Illuminate\Support\Facades\Storage;
+use Session;
+use App\Cart;
+
+
 
 class ProductController extends Controller
 {
@@ -128,5 +133,14 @@ class ProductController extends Controller
         $product->status = 0;
         $product->update();
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
+    }
+    public function addToCart($id){
+        $product = Product::find($id);
+        /* dd($product); */
+        $oldCart = Session::has('cart')? Session::get('cart'):null ;
+        $cart = new Cart($oldCart);
+        $cart->add($product , $id);
+        Session::put('cart' , $cart);
+        return redirect('/shop');
     }
 }
