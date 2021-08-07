@@ -13,6 +13,7 @@ use App\Cart;
 use App\Client;
 use Stripe\Charge;
 use Stripe\Stripe;
+use App\Order;
 
 // use Session;
 
@@ -100,6 +101,17 @@ class ClientController extends Controller
                 "source" => $request->input('stripeToken'), // obtainded with Stripe.js
                 "description" => "Test Charge"
             ));
+
+$order = new Order();
+
+$order->name = $request->input('name');
+$order->adress = $request->input('adress');
+$order->cart = serialize($cart);
+$order->payment_id = $charge->id ;
+
+$order->save();
+
+
         } catch (\Exception $e) {
             Session::put('error', $e->getMessage());
             return redirect('/checkout');
