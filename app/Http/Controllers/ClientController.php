@@ -71,6 +71,10 @@ class ClientController extends Controller
 
     public function checkout()
     {
+        if(!Session::has('client')){
+            return redirect('/login');
+        }
+
         if (!Session::has('cart')) {
             return redirect('/cart');
         }
@@ -110,10 +114,6 @@ class ClientController extends Controller
     }
 
 
-
-
-
-
     public function login()
     {
         return view('client.login');
@@ -138,8 +138,6 @@ class ClientController extends Controller
         //    return back()->with('status' , 'Your account has been created successfully');
         return redirect('/login');
     }
-
-
 
 
     public function accsesaccount(Request $request)
