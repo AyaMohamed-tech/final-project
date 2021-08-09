@@ -134,13 +134,14 @@ class ProductController extends Controller
         $product->update();
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
     }
-    public function addToCart($id){
+    public function addToCart($id)
+    {
         $product = Product::find($id);
         /* dd($product); */
-        $oldCart = Session::has('cart')? Session::get('cart'):null ;
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product , $id);
-        Session::put('cart' , $cart);
+        $cart->add($product, $id);
+        Session::put('cart', $cart);
         return redirect('/shop');
     }
 }
