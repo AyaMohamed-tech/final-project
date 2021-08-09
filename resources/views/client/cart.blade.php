@@ -39,11 +39,8 @@
                             </thead>
                             <tbody>
 
+                                {!! Form::hidden($sub_total = 0) !!}
                                 @if (Session::has('cart'))
-
-                                    {!! Form::hidden($sub_total = 0) !!}
-                                    {!! Form::hidden($discount = 0) !!}
-                                    {!! Form::hidden($delivery = 15) !!}
                                     @foreach ($products as $product)
                                         {!! Form::hidden($sub_total += $product['product_price']) !!}
                                         <tr class="text-center">
@@ -85,9 +82,10 @@
                                             <td class="total">${{ $product['product_price'] * $product['qty'] }}</td>
                                         </tr><!-- END TR-->
                                     @endforeach
-
                                 @else
                                 @endif
+                                {!! Form::hidden($discount = 0.3 * $sub_total) !!}
+                                {!! Form::hidden($delivery = 0) !!}
                             </tbody>
                         </table>
                     </div>
