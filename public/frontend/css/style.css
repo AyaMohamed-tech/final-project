@@ -10011,3 +10011,40 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+
+    /*---------------about as---------------------*/
+    .about{
+      width: 80%;
+      padding: 10px;
+      margin-top: 20px;
+      background-color: #f0eff4;
+      border-radius:10px;
+      margin-left:140px;
+    }
+    .about h2{
+      color:#00296b;
+    }
+    .about p{
+      color: #00296b;
+      font-style: italic;
+      font-size: 18px;
+    }
+    .aboutus{
+      width: 80%;
+      padding: 10px;
+      background-color: #f0eff4;
+      border-radius:10px;
+      margin-top:20px;
+      margin-bottom:20px;
+      margin-left:140px;
+    }
+    .aboutus h2{
+      color:#00296b;
+    }
+    .aboutus ul li{
+      color: #00296b;
+      font-style: italic;
+      font-size: 18px;
+    }

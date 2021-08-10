@@ -166,4 +166,8 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
+    //===================about function========================================
+    public function about(){
+        return view('client.about');
+    }
 }
