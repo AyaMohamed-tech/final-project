@@ -32,6 +32,7 @@ Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
 Route::get('/about','ClientController@about');//------------about route--------------------------
 Route::get('/privacypolicy','ClientController@privacypolicy');//------------privacypolicy route-------------
+Route::get('/terms','ClientController@terms');//------------terms route-------------
 
 
 Route::get('/view_pdf/{id}', 'PdfController@viewpdf');

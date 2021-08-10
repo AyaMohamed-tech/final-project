@@ -175,4 +175,13 @@ class ClientController extends Controller
     public function privacypolicy(){
         return view('client.privacypolicy');
     }
+
+ //===================privacypolicy===============================
+ public function terms(){
+    return view('client.terms');
+}
+
+
+
+
 }
