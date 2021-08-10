@@ -24,7 +24,8 @@ class ClientController extends Controller
         $sliders = Slider::where('status', '1')->get();
         //===== get all sliders in Slider model =========
         $products = Product::where('status', '1')->get();
-        return view('client.home')->with(['sliders' => $sliders, 'products' => $products]);
+        $categories = Category::get();
+        return view('client.home')->with(['sliders' => $sliders, 'products' => $products, 'categories' => $categories]);
     }
     public function cart()
     {
@@ -167,7 +168,8 @@ class ClientController extends Controller
         return back();
     }
     //===================about function========================================
-    public function about(){
+    public function about()
+    {
         return view('client.about');
     }
 }
