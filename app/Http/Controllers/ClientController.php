@@ -178,9 +178,14 @@ class ClientController extends Controller
         return view('client.privacypolicy');
     }
 
- //===================privacypolicy===============================
+ //===================terms===============================
  public function terms(){
     return view('client.terms');
+}
+
+ //===================shipping===============================
+ public function shipping(){
+    return view('client.shipping');
 }
 
 

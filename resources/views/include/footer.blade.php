@@ -52,7 +52,7 @@
               <h2 class="ftco-heading-2">Help</h2>
               <div class="d-flex">
 	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-	                <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
+	                <li><a href="/shipping" class="py-2 d-block">Shipping Information</a></li>
 	                <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
 	                <li><a href="/terms" class="py-2 d-block">Terms &amp; Conditions</a></li>
 	                <li><a href="/privacypolicy" class="py-2 d-block">Privacy Policy</a></li>
