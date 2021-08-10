@@ -35,6 +35,7 @@ Route::get('/about', 'ClientController@about'); //------------about route-------
 Route::get('/privacypolicy', 'ClientController@privacypolicy'); //------------privacypolicy route-------------
 Route::get('/terms', 'ClientController@terms'); //------------terms route-------------
 Route::get('/shipping', 'ClientController@shipping'); //------------shipping route-------------
+Route::get('/returns', 'ClientController@returns'); //------------returns route-------------
 
 
 

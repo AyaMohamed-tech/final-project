@@ -188,6 +188,10 @@ class ClientController extends Controller
     return view('client.shipping');
 }
 
+ //===================shipping===============================
+ public function returns(){
+    return view('client.returns');
+}
 
 
 
