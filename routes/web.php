@@ -31,7 +31,14 @@ Route::post('postcheckout', 'ClientController@postcheckout');
 Route::post('/createaccount', 'ClientController@createaccount');
 Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
+<<<<<<< HEAD
 Route::get('/about', 'ClientController@about'); //------------about route--------------------------
+=======
+Route::get('/about','ClientController@about');//------------about route--------------------------
+Route::get('/privacypolicy','ClientController@privacypolicy');//------------privacypolicy route-------------
+Route::get('/terms','ClientController@terms');//------------terms route-------------
+
+>>>>>>> ca133717ead7a27f733cd7be6c3aa26f5656de35
 
 
 Route::get('/view_pdf/{id}', 'PdfController@viewpdf');
