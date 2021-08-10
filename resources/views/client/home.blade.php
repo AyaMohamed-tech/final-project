@@ -141,11 +141,10 @@
     		<div class="row">
 
       <!-------------------viewing products dynamically------------------------>
-	      @foreach($products as $product)
-
+      @foreach($products as $product)			 
     			<div class="col-md-6 col-lg-3 ftco-animate">
     				<div class="product">
-    					<a href="#" class="img-prod"><img class="img-fluid" src="/storage/product_images/{{$product->product_image}}" alt="Colorlib Template">
+    					<a href="#" class="img-prod"><img class="img-fluid" src="/storage/product_images/{{$product->product_image}}" alt="">
     						<span class="status">30%</span>
     						<div class="overlay"></div>
     					</a>
@@ -161,7 +160,7 @@
 	    							<a href="#" class="add-to-cart d-flex justify-content-center align-items-center text-center">
 	    								<span><i class="ion-ios-menu"></i></span>
 	    							</a>
-	    							<a href="#" class="buy-now d-flex justify-content-center align-items-center mx-1">
+	    							<a href="/addToCart/{{$product->id}}" class="buy-now d-flex justify-content-center align-items-center mx-1">
 	    								<span><i class="ion-ios-cart"></i></span>
 	    							</a>
 	    							<a href="#" class="heart d-flex justify-content-center align-items-center ">
@@ -172,8 +171,7 @@
     					</div>
     				</div>
     			</div>
-
-              @endforeach
+				@endforeach
 
     		</div>
     	</div>
