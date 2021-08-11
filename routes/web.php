@@ -31,17 +31,14 @@ Route::post('postcheckout', 'ClientController@postcheckout');
 Route::post('/createaccount', 'ClientController@createaccount');
 Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
-<<<<<<< HEAD
 Route::get('/contactus', 'ClientController@contactus'); 
 Route::post('/datacontact', 'ClientController@datacontact');
 
-=======
 Route::get('/about', 'ClientController@about'); //------------about route--------------------------
 Route::get('/privacypolicy', 'ClientController@privacypolicy'); //------------privacypolicy route-------------
 Route::get('/terms', 'ClientController@terms'); //------------terms route-------------
 Route::get('/shipping', 'ClientController@shipping'); //------------shipping route-------------
 Route::get('/returns', 'ClientController@returns'); //------------returns route-------------
->>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
 
 
 
@@ -55,7 +52,7 @@ Route::get('/loginadmin', 'AdminController@login');
 Route::get('/signupadmin', 'AdminController@signup');
 Route::post('/createaccountadmin', 'AdminController@createaccount');
 Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
-Route::get('/logoutadmin', 'AdminController@logout');
+// Route::get('/logoutadmin', 'AdminController@logout');
 
 
 Route::get('/addcategory', 'CategoryController@addcategory');

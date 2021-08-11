@@ -89,11 +89,11 @@ class AdminController extends Controller
         }
     }
 
-    public function logout()
-    {
-        Session::forget('admin');
-        return back();
-    }
+    // public function logout()
+    // {
+    //     Session::forget('admin');
+    //     return back();
+    // }
 
 
 
