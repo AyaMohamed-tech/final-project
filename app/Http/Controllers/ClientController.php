@@ -169,7 +169,7 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
-<<<<<<< HEAD
+
     //==================================
     
 
@@ -203,7 +203,6 @@ class ClientController extends Controller
 
     }
    
-=======
     //===================about function========================================
     public function about()
     {
@@ -231,6 +230,4 @@ class ClientController extends Controller
 }
 
 
-
->>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
 }
