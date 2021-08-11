@@ -14,7 +14,9 @@ use App\Client;
 use Stripe\Charge;
 use Stripe\Stripe;
 use App\Order;
+use App\Contact;
 use DB;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ClientController extends Controller
 {
@@ -167,4 +169,37 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
+    //==================================
+    
+
+    public function contactus()
+    {
+      
+        return view('client.contactus');
+
+    }
+    
+//===================================================
+    public function datacontact(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:4',
+            'email' => 'email|required|unique:contacts',
+            'subject' => 'required|min:4',
+            'message' => 'required|min:5'
+
+        ]);
+        $contact = new Contact();
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->subject = $request->input('subject');
+        $contact->message = $request->input('message');
+
+        $contact->save();
+        // return view('client.contactus'); 
+        // return view('client.contactus')->with('status' , 'Your Message has been sent successfully');
+         return back()->with('status' , 'Your Message has been sent successfully');
+
+    }
+   
 }
