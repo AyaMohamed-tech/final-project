@@ -48,15 +48,15 @@
                                         <td>
                                             <a class="btn btn-outline-primary"
                                                 onclick="window.location = '{{ url('/edit_product/' . $product->id) }}' ">Edit</a>
-                                            <a href="/deleteproduct/{{ $product->id }}" class="btn btn-outline-danger"
+                                            <a href="/delete_product/{{ $product->id }}" class="btn btn-outline-danger"
                                                 id='delete'>
                                                 Delete
                                             </a>
                                             @if ($product->status == 1)
-                                                <a href="/unactivateproduct/{{ $product->id }}"
+                                                <a href="/unactivate_product/{{ $product->id }}"
                                                     class="btn btn-outline-warning">Unactivate</a>
                                             @else
-                                                <a href="/activateproduct/{{ $product->id }}"
+                                                <a href="/activate_product/{{ $product->id }}"
                                                     class="btn btn-outline-success">activate</a>
                                             @endif
                                         </td>

@@ -39,9 +39,10 @@
                             </thead>
                             <tbody>
 
+                                {!! Form::hidden($sub_total = 0) !!}
                                 @if (Session::has('cart'))
-
                                     @foreach ($products as $product)
+                                        {!! Form::hidden($sub_total += $product['product_price']) !!}
                                         <tr class="text-center">
                                             <td class="product-remove"><a
                                                     href="/removeitem/{{ $product['product_id'] }}"><span
@@ -80,18 +81,18 @@
 
                                             <td class="total">${{ $product['product_price'] * $product['qty'] }}</td>
                                         </tr><!-- END TR-->
-
-
                                     @endforeach
                                 @else
                                 @endif
+                                {!! Form::hidden($discount = 0.3 * $sub_total) !!}
+                                {!! Form::hidden($delivery = 0) !!}
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             <div class="row justify-content-end">
-                <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
+                {{-- <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
                         <h3>Coupon Code</h3>
                         <p>Enter your coupon code if you have one</p>
@@ -124,26 +125,26 @@
                         </form>
                     </div>
                     <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
-                </div>
+                </div> --}}
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
                         <h3>Cart Totals</h3>
                         <p class="d-flex">
                             <span>Subtotal</span>
-                            <span>$20.60</span>
+                            <span>{{ $sub_total }}</span>
                         </p>
                         <p class="d-flex">
                             <span>Delivery</span>
-                            <span>$0.00</span>
+                            <span>${{ $delivery }}</span>
                         </p>
                         <p class="d-flex">
                             <span>Discount</span>
-                            <span>$3.00</span>
+                            <span>${{ $discount }}</span>
                         </p>
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$17.60</span>
+                            <span>${{ Session::get('cart')->totalPrice }}</span>
                         </p>
                     </div>
                     <p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

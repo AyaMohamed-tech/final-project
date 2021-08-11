@@ -109,7 +109,7 @@ class ProductController extends Controller
         return redirect('/products')->with('status', 'The ' . $request->input('product_name') . ' Product has been Updated Successfuly');
     }
 
-    public function deleteproduct($id)
+    public function delete_product($id)
     {
         $product = Product::find($id);
         if ($product->product_image != 'noimage.jpg') {
@@ -119,7 +119,7 @@ class ProductController extends Controller
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product has been Deleted Successfuly');
     }
 
-    public function activateproduct($id)
+    public function activate_product($id)
     {
         $product = Product::find($id);
         $product->status = 1;
@@ -127,20 +127,21 @@ class ProductController extends Controller
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Activated Successfuly');
     }
 
-    public function unactivateproduct($id)
+    public function unactivate_product($id)
     {
         $product = Product::find($id);
         $product->status = 0;
         $product->update();
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
     }
-    public function addToCart($id){
+    public function addToCart($id)
+    {
         $product = Product::find($id);
         /* dd($product); */
-        $oldCart = Session::has('cart')? Session::get('cart'):null ;
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->add($product , $id);
-        Session::put('cart' , $cart);
+        $cart->add($product, $id);
+        Session::put('cart', $cart);
         return redirect('/shop');
     }
 }

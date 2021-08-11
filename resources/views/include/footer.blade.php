@@ -41,10 +41,16 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Menu</h2>
               <ul class="list-unstyled">
+<<<<<<< HEAD
                 <li><a href="#" class="py-2 d-block">Shop</a></li>
                 <li><a href="#" class="py-2 d-block">About</a></li>
                 <li><a href="#" class="py-2 d-block">Journal</a></li>
                 <li><a href="{{URL::to('/contactus')}}" class="py-2 d-block">Contact Us</a></li>
+=======
+                <li><a href="/shop" class="py-2 d-block">Shop</a></li>
+                <li><a href="/about" class="py-2 d-block">About</a></li>
+                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
+>>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
               </ul>
             </div>
           </div>
@@ -53,14 +59,14 @@
               <h2 class="ftco-heading-2">Help</h2>
               <div class="d-flex">
 	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-	                <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-	                <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-	                <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-	                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
+	                <li><a href="/shipping" class="py-2 d-block">Shipping Information</a></li>
+	                <li><a href="/returns" class="py-2 d-block">Returns &amp; Exchange</a></li>
+	                <li><a href="/terms" class="py-2 d-block">Terms &amp; Conditions</a></li>
+	                <li><a href="/privacypolicy" class="py-2 d-block">Privacy Policy</a></li>
 	              </ul>
 	              <ul class="list-unstyled">
-	                <li><a href="#" class="py-2 d-block">FAQs</a></li>
-	                <li><a href="#" class="py-2 d-block">Contact</a></li>
+	                <!-- <li><a href="#" class="py-2 d-block">FAQs</a></li> -->
+	                <!-- <li><a href="#" class="py-2 d-block">Contact</a></li> -->
 	              </ul>
 	            </div>
             </div>

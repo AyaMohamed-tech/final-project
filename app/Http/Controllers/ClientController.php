@@ -23,10 +23,11 @@ class ClientController extends Controller
     public function home()
     {
         //===== get all products in Product model =========
-        $products = Product::get();
+        $sliders = Slider::where('status', '1')->get();
         //===== get all sliders in Slider model =========
-        $sliders = Slider::get();
-        return view('client.home')->with('sliders', $sliders)->with('products', $products);
+        $products = Product::where('status', '1')->get();
+        $categories = Category::get();
+        return view('client.home')->with(['sliders' => $sliders, 'products' => $products, 'categories' => $categories]);
     }
     public function cart()
     {
@@ -67,13 +68,13 @@ class ClientController extends Controller
         //===== get all categories in Category model =========
         $categories = Category::get();
         //===== get all products in Product model =========
-        $products = Product::get();
+        $products = Product::where('status', '1')->get();
         return view('client.shop')->with('products', $products)->with('categories', $categories);
     }
 
     public function checkout()
     {
-        if(!Session::has('client')){
+        if (!Session::has('client')) {
             return redirect('/login');
         }
 
@@ -99,7 +100,6 @@ class ClientController extends Controller
                 "source" => $request->input('stripeToken'), // obtainded with Stripe.js
                 "description" => "Test Charge"
             ));
-
             $order = new Order();
             $order->name = $request->input('name');
             $order->address = $request->input('address');
@@ -169,6 +169,7 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
+<<<<<<< HEAD
     //==================================
     
 
@@ -202,4 +203,34 @@ class ClientController extends Controller
 
     }
    
+=======
+    //===================about function========================================
+    public function about()
+    {
+        return view('client.about');
+    }
+
+    //===================privacypolicy===============================
+    public function privacypolicy(){
+        return view('client.privacypolicy');
+    }
+
+ //===================terms===============================
+ public function terms(){
+    return view('client.terms');
+}
+
+ //===================shipping===============================
+ public function shipping(){
+    return view('client.shipping');
+}
+
+ //===================shipping===============================
+ public function returns(){
+    return view('client.returns');
+}
+
+
+
+>>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
 }

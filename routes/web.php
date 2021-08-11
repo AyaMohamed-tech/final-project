@@ -27,16 +27,25 @@ Route::post('/updateqty', 'ClientController@updateqty');
 Route::get('/removeitem/{id}', 'ClientController@removeitem');
 Route::post('postcheckout', 'ClientController@postcheckout');
 
+
 Route::post('/createaccount', 'ClientController@createaccount');
 Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
+<<<<<<< HEAD
 Route::get('/contactus', 'ClientController@contactus'); 
 Route::post('/datacontact', 'ClientController@datacontact');
+
+=======
+Route::get('/about', 'ClientController@about'); //------------about route--------------------------
+Route::get('/privacypolicy', 'ClientController@privacypolicy'); //------------privacypolicy route-------------
+Route::get('/terms', 'ClientController@terms'); //------------terms route-------------
+Route::get('/shipping', 'ClientController@shipping'); //------------shipping route-------------
+Route::get('/returns', 'ClientController@returns'); //------------returns route-------------
+>>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
 
 
 
 Route::get('/view_pdf/{id}', 'PdfController@viewpdf');
-
 
 
 Route::get('/admin', 'AdminController@dashboard');
@@ -67,8 +76,6 @@ Route::get('/delete_product/{id}', 'ProductController@delete_product');
 Route::get('/activate_product/{id}', 'ProductController@activate_product');
 Route::get('/unactivate_product/{id}', 'ProductController@unactivate_product');
 Route::get('/addToCart/{id}', 'ProductController@addToCart');
-
-
 
 
 Route::get('/sliders', 'SliderController@sliders');
