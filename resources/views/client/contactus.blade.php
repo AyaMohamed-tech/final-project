@@ -93,11 +93,11 @@ Contact US
                      
                     <div class="validate"></div>
                   </div>
-                  <div class="mb-3">
+                  <!-- <div class="mb-3">
                     <div class="loading">Loading</div>
                     <div class="error-message"></div>
                     <div class="sent-message">Your message has been sent. Thank you!</div>
-                  </div>
+                  </div> -->
                   <!-- <div class="text-center btn btn-black"><button type="submit">Send Message</button></div> -->
                   <div class="text-center btn">
                   {{Form::submit('Send Message',['class' => 'btn btn-danger'])}}
