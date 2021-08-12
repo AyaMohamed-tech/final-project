@@ -224,10 +224,16 @@ class ClientController extends Controller
     return view('client.shipping');
 }
 
- //===================shipping===============================
+ //===================returns===============================
  public function returns(){
     return view('client.returns');
 }
 
+ //===================profile=============================
+
+public function profile()
+{
+    return view('client.profile');
+}
 
 }
