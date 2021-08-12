@@ -17,7 +17,7 @@ profile
                       <div class="card-body ">
                           <br><br><br>
                           <p class="h2 ">MY PERSONAL DATA :</p><br>
-                          <p class=" ">full name : <br> email adress : <br> discription : </p>
+                          <p class=" ">full name : <br> email adress : {{Session::get('client')->email }}<br> discription : </p>
                           <!-- <p class="small ">Mollit anim laborum duis adseu dolor iuyn foluprcate velit<br>Mollit anim laborum duis adseu dolor iuyn foluprcate velit<br> ess cillum dolore egru lofrre dsu.</p> -->
                         </div>
 

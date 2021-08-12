@@ -233,7 +233,11 @@ class ClientController extends Controller
 
 public function profile()
 {
-    return view('client.profile');
+    
+    $clients = Client::get();
+    /* return view('admin.sliders')->with('sliders',$sliders); */
+/*     dd(Session::get('client')->email);
+ */    return view('client.profile')->with('clients',$clients);
 }
 
 }
