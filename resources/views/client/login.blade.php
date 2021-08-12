@@ -64,7 +64,7 @@ Log In
 					</div>
 					<div class="text-center p-t-90">
 						<a class="txt1" href="/signup">
-							Don't Have an account ? Signup
+							<h6>Don't Have an account ? Signup</h6>
                         </a>
 					</div>
 

@@ -171,10 +171,7 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 7c6022f435ce6882f8c6aa940bb7be41a6a2991f
     //==================================
     
 

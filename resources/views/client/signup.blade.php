@@ -56,7 +56,7 @@ Sign up
 					
 					<div class="text-center p-t-90">
 						<a class="txt1" href="/login">
-							<h6>Do you Have an account ? SignIn</h6>
+							<h6>Do you Have an account ? Log In </h6>
                         </a>
 					</div>
 				</form>
