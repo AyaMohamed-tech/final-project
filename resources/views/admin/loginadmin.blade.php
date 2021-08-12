@@ -38,7 +38,7 @@ Log In As Admin
 					</span>
 				</a>
 					<span class="login100-form-title p-b-34 p-t-27">
-						log in
+						log in as Admin
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">

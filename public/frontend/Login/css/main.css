@@ -254,6 +254,18 @@ iframe {
     background: linear-gradient(top, #7579ff, #b224ef);
 }
 
+.wrap-login1001 {
+    width: 500px;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 55px 55px 37px 55px;
+    background: #9152f8;
+    background: -webkit-linear-gradient(top, rgb(190, 87, 147), black);
+    background: -o-linear-gradient(top, #bc75ff, #b224ef);
+    background: -moz-linear-gradient(top, #7579ff, #b224ef);
+    background: linear-gradient(top, #7579ff, #b224ef);
+}
+
 
 /*------------------------------------------------------------------
 [ Form ]*/
@@ -572,6 +584,18 @@ iframe {
 }
 
 .alert-validate:hover:before {
+    visibility: visible;
+    opacity: 1;
+}
+
+@media (max-width: 992px) {
+    .alert-validate::before {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+alert-validate:hover:before {
     visibility: visible;
     opacity: 1;
 }

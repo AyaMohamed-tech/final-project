@@ -8,11 +8,16 @@ use App\Category;
 use App\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Session;
+
 
 class CategoryController extends Controller
 {
     public function addcategory()
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         return view('admin.addcategory');
     }
     public function savecategory(Request $request)
@@ -49,17 +54,26 @@ class CategoryController extends Controller
     }
     public function categories()
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $categories = Category::get();
         return view('admin.categories')->with('categories', $categories);
     }
     public function edit($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $category = Category::find($id);
         return view('admin.editcategory')->with('category', $category);
     }
 
     public function updatecategory(Request $request)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $this->validate($request, [
             'category_name' => 'required',
             'category_image' => 'image|nullable|max:1999'
@@ -95,6 +109,9 @@ class CategoryController extends Controller
     }
     public function delete($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $category = Category::find($id);
         if ($category->product_image != 'noimage.jpg') {
             Storage::delete('/public/category_images/' . $category->category_image);
@@ -106,6 +123,9 @@ class CategoryController extends Controller
 
     public function view_by_cat($name)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
 
         $categories = Category::get();
         $products = Product::where('product_category', $name)->get();

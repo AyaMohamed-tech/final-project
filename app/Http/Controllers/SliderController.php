@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Slider;
@@ -9,10 +10,16 @@ use App\Slider;
 class SliderController extends Controller
 {
     public function addslider(){
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         return view('admin.addslider');
     }
 
     public function saveslider(Request $request){
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
 
         $this->validate($request,['description_one'=>'required',
                                   'description_two'=>'required',
@@ -51,6 +58,9 @@ class SliderController extends Controller
 
     }
     public function sliders(){
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $sliders = Slider::get();
         return view('admin.sliders')->with('sliders',$sliders);
     }
@@ -64,6 +74,9 @@ class SliderController extends Controller
 
     public function updateslider(Request $request){
 
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $this->validate($request,['description_one'=>'required',
                                   'description_two'=>'required',
                                   'slider_image'=>'image|nullable|max:1999']);
@@ -106,6 +119,9 @@ class SliderController extends Controller
     }
 
     public function delete_slider($id){
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
 
         $slider = Slider::find($id);
 
@@ -122,6 +138,10 @@ class SliderController extends Controller
 
     public function unactivate_slider($id){
 
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
+
         $slider = Slider::find($id);
 
         $slider->status = 0;
@@ -131,6 +151,10 @@ class SliderController extends Controller
         return redirect('/sliders')->with('status','The Slider status has been unactivated successfully');
     }
     public function activate_slider($id){
+        
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
 
         $slider = Slider::find($id);
 

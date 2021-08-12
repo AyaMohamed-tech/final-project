@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 use App\Product;
 use App\Category;
-use Session;
 use App\Cart;
 
 
@@ -18,12 +18,18 @@ class ProductController extends Controller
 
     function addproduct()
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $categories = Category::All()->pluck('category_name', 'category_name');
         return view('admin.addproduct')->with('categories', $categories);
     }
 
     public function saveproduct(Request $request)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
 
         $this->validate($request, [
             'product_name' => 'required',
@@ -70,12 +76,18 @@ class ProductController extends Controller
 
     public function products()
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $products = product::get();
         return view('admin.products')->with('products', $products);
     }
 
     public function editproduct($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $categories = Category::All()->pluck('category_name', 'category_name');
         $product = product::find($id);
         return view('admin.editproduct')->with('product', $product)->with('categories', $categories);
@@ -83,6 +95,9 @@ class ProductController extends Controller
 
     public function updateproduct(Request $request)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $this->validate($request, [
             'product_name' => 'required',
             'product_price' => 'required',
@@ -111,6 +126,9 @@ class ProductController extends Controller
 
     public function delete_product($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $product = Product::find($id);
         if ($product->product_image != 'noimage.jpg') {
             Storage::delete('/public/product_images/' . $product->product_image);
@@ -121,6 +139,9 @@ class ProductController extends Controller
 
     public function activate_product($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $product = Product::find($id);
         $product->status = 1;
         $product->update();
@@ -129,6 +150,9 @@ class ProductController extends Controller
 
     public function unactivate_product($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $product = Product::find($id);
         $product->status = 0;
         $product->update();
@@ -136,6 +160,9 @@ class ProductController extends Controller
     }
     public function addToCart($id)
     {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $product = Product::find($id);
         /* dd($product); */
         $oldCart = Session::has('cart') ? Session::get('cart') : null;

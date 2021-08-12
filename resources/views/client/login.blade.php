@@ -7,7 +7,7 @@ Log In
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url(frontend/login/images/bg-01.jpg);">
 		<!-- note -->
-			<div class="wrap-login100">
+			<div class="wrap-login1001">
 			@if(Session::has('error'))
 				   <div class="alert alert-danger">
 					   {{Session::get('error')}}
