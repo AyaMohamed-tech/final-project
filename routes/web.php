@@ -33,6 +33,8 @@ Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
 Route::get('/contactus', 'ClientController@contactus'); 
 Route::post('/datacontact', 'ClientController@datacontact');
+Route::get('/profile', 'ClientController@profile');
+
 
 Route::get('/about', 'ClientController@about'); //------------about route--------------------------
 Route::get('/privacypolicy', 'ClientController@privacypolicy'); //------------privacypolicy route-------------

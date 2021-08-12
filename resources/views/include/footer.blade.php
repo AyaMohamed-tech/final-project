@@ -1,4 +1,4 @@
-<section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
+<!-- <section class="ftco-section ftco-no-pt ftco-no-pb py-5 bg-light">
       <div class="container py-4">
         <div class="row d-flex justify-content-center py-5">
           <div class="col-md-6">
@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <footer class="ftco-footer ftco-section">
       <div class="container">
       	<div class="row">
@@ -41,16 +41,9 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Menu</h2>
               <ul class="list-unstyled">
-<<<<<<< HEAD
-                <li><a href="#" class="py-2 d-block">Shop</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Journal</a></li>
-                <li><a href="{{URL::to('/contactus')}}" class="py-2 d-block">Contact Us</a></li>
-=======
                 <li><a href="/shop" class="py-2 d-block">Shop</a></li>
                 <li><a href="/about" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
->>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
+                <li><a href="{{URL::to('/contactus')}}" class="py-2 d-block">Contact Us</a></li>
               </ul>
             </div>
           </div>
