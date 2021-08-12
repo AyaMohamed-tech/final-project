@@ -233,10 +233,14 @@ class ClientController extends Controller
         return view('client.returns');
     }
 
-    //===================profile=============================
+public function profile()
+{
+    
+    $clients = Client::get();
+  
+     /* dd(Session::get('client')->email); */
+    return view('client.profile')->with('clients',$clients);
+}
 
-    public function profile()
-    {
-        return view('client.profile');
-    }
+
 }
