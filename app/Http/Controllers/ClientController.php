@@ -235,10 +235,13 @@ class ClientController extends Controller
 
 public function profile()
 {
-    
+    if (!Session::has('client')) {
+        return redirect('/login');
+    }
+
     $clients = Client::get();
   
-     /* dd(Session::get('client')->email); */
+    
     return view('client.profile')->with('clients',$clients);
 }
 
