@@ -18,12 +18,14 @@
               <img src="{{asset('backend/images/logo_2H_tech.png')}}" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
+              <a class="dropdown-item"  href="{{URL::to('/logoutadmin')}}">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
             </div>
           </li>
+          <li class="nav-item active"><a href="{{URL::to('/logoutadmin')}}" class="nav-link"><span class="fa fa-user"></span>Logout</a></li>
+
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="ti-layout-grid2"></span>

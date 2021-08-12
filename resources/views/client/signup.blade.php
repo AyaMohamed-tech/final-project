@@ -6,7 +6,7 @@ Sign up
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url(frontend/login/images/bg-01.jpg);">
-			<div class="wrap-login100">
+			<div class="wrap-login1001">
 				@if(Session::has('status'))
 				   <div class="alert alert-success">
 					   {{Session::get('status')}}
@@ -33,6 +33,10 @@ Sign up
                     Sign up
 
 					</span>
+					<div class="wrap-input100 validate-input" data-validate = "Enter your name">
+						<input class="input100" type="text" name="name" placeholder="Name">
+						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
 						<input class="input100" type="text" name="email" placeholder="Email">
@@ -52,7 +56,7 @@ Sign up
 					
 					<div class="text-center p-t-90">
 						<a class="txt1" href="/login">
-							<h6>Do you Have an account ? SignIn</h6>
+							<h6>Do you Have an account ? Log In </h6>
                         </a>
 					</div>
 				</form>

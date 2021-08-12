@@ -128,10 +128,12 @@ class ClientController extends Controller
     {
 
         $this->validate($request, [
+            'name' => 'required|min:4',
             'email' => 'email|required|unique:clients',
-            'password' => 'required|min:4'
+            'password' => 'required|min:4',
         ]);
         $client = new Client();
+        $client->name = $request->input('name');
         $client->email = $request->input('email');
         $client->password = bcrypt($request->input('password'));  //hash password
 
@@ -169,18 +171,16 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
-
     //==================================
-    
+
 
     public function contactus()
     {
-      
-        return view('client.contactus');
 
+        return view('client.contactus');
     }
-    
-//===================================================
+
+    //===================================================
     public function datacontact(Request $request)
     {
         $this->validate($request, [
@@ -197,12 +197,11 @@ class ClientController extends Controller
         $contact->message = $request->input('message');
 
         $contact->save();
-        // return view('client.contactus'); 
+        // return view('client.contactus');
         // return view('client.contactus')->with('status' , 'Your Message has been sent successfully');
-         return back()->with('status' , 'Your Message has been sent successfully');
-
+        return back()->with('status', 'Your Message has been sent successfully');
     }
-   
+
     //===================about function========================================
     public function about()
     {
@@ -210,34 +209,37 @@ class ClientController extends Controller
     }
 
     //===================privacypolicy===============================
-    public function privacypolicy(){
+    public function privacypolicy()
+    {
         return view('client.privacypolicy');
     }
 
- //===================terms===============================
- public function terms(){
-    return view('client.terms');
-}
+    //===================terms===============================
+    public function terms()
+    {
+        return view('client.terms');
+    }
 
- //===================shipping===============================
- public function shipping(){
-    return view('client.shipping');
-}
+    //===================shipping===============================
+    public function shipping()
+    {
+        return view('client.shipping');
+    }
 
- //===================returns===============================
- public function returns(){
-    return view('client.returns');
-}
-
- //===================profile=============================
+    //===================returns===============================
+    public function returns()
+    {
+        return view('client.returns');
+    }
 
 public function profile()
 {
     
     $clients = Client::get();
-    /* return view('admin.sliders')->with('sliders',$sliders); */
-/*     dd(Session::get('client')->email);
- */    return view('client.profile')->with('clients',$clients);
+  
+     /* dd(Session::get('client')->email); */
+    return view('client.profile')->with('clients',$clients);
 }
+
 
 }
