@@ -52,8 +52,8 @@ Route::get('/orders', 'AdminController@orders');
 Route::get('/new_orders', 'AdminController@new_orders');
 Route::get('/delivered/{id}', 'AdminController@delivered');
 Route::get('/loginadmin', 'AdminController@login');
-//Route::get('/signupadmin', 'AdminController@signup');
-//Route::post('/createaccountadmin', 'AdminController@createaccount');
+Route::get('/signupadmin', 'AdminController@signup');
+Route::post('/createaccountadmin', 'AdminController@createaccount');
 Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
  Route::get('/logoutadmin', 'AdminController@logout');
 
