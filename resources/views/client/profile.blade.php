@@ -30,7 +30,7 @@ profile
 
     <div class="container">
         <div class="col-4 mt-5">
-          <h4>MY favourites :</h4>
+          <h4>MY FAVOURITES :</h4>
         </div>
     </div>
 
