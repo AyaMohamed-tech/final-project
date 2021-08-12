@@ -15,32 +15,49 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         return view('admin.dashboard');
-    
-}
+    }
 
 
 
     public function orders()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-
-        $orders = Order::get();
-
+        // $orders = Order::get();
+        $orders = Order::where('status', '1')->get();
         $orders->transform(function ($order, $key) {
             $order->cart = unserialize($order->cart);
             return $order;
         });
         return view('admin.orders')->with('orders', $orders);
     }
+
+    public function new_orders()
+    {
+        if (!Session::has('admin')) {
+            return redirect('/loginadmin');
+        }
+
+        $orders = Order::where('status', '0')->get();
+        $orders->transform(function ($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('admin.new_orders')->with('orders', $orders);
+    }
+    public function delivered($id)
+    {
+        $order = Order::find($id);
+        $order->status = 1;
+        $order->update();
+        return redirect('/orders')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
+    }
     //==========================================================
-
-
     public function login()
     {
         return view('admin.loginadmin');
@@ -65,7 +82,6 @@ class AdminController extends Controller
     //     //    return back()->with('status' , 'Your account has been created successfully');
     //     return redirect('/loginadmin');
     // }
-
 
     public function accsesaccount(Request $request)
     {
@@ -94,8 +110,4 @@ class AdminController extends Controller
         Session::forget('admin');
         return back();
     }
-
-
-
-
 }

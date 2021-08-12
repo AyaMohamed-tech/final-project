@@ -124,12 +124,18 @@
             <div class="row">
 
                 <!-------------------viewing products dynamically------------------------>
+                {!! Form::hidden($cat_discount = 0) !!}
+
                 @foreach ($products as $product)
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="product">
                             <a href="#" class="img-prod"><img class="img-fluid"
                                     src="/storage/product_images/{{ $product->product_image }}" alt="">
-                                <span class="status">30%</span>
+                                @if (time() - $product->created_at->timestamp > 1000)
+                                    {{-- 172800 second = 2 Days --}}
+                                    {!! Form::hidden($cat_discount = 0.3) !!}
+                                    <span class="status">30%</span>
+                                @endif
                                 <div class="overlay"></div>
                             </a>
                             <div class="text py-3 pb-4 px-3 text-center">
@@ -137,22 +143,23 @@
                                 <div class="d-flex">
                                     <div class="pricing">
                                         <p class="price"><span class="mr-2 price-dc"></span><span
-                                                class="price-sale">${{ $product->product_price }}</span></p>
+                                                class="price-sale">${{ $cat_discount ? $cat_discount * $product->product_price : $product->product_price }}</span>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="bottom-area d-flex px-3">
                                     <div class="m-auto d-flex">
-                                        <a href="#"
+                                        {{-- <a href="#"
                                             class="add-to-cart d-flex justify-content-center align-items-center text-center">
                                             <span><i class="ion-ios-menu"></i></span>
-                                        </a>
+                                        </a> --}}
                                         <a href="/addToCart/{{ $product->id }}"
                                             class="buy-now d-flex justify-content-center align-items-center mx-1">
                                             <span><i class="ion-ios-cart"></i></span>
                                         </a>
-                                        <a href="#" class="heart d-flex justify-content-center align-items-center ">
+                                        {{-- <a href="#" class="heart d-flex justify-content-center align-items-center ">
                                             <span><i class="ion-ios-heart"></i></span>
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </div>
                             </div>
@@ -164,7 +171,7 @@
         </div>
     </section>
 
-    <section class="ftco-section img" style="background-image: url(frontend/images/bg_3.jpg);">
+    {{-- <section class="ftco-section img" style="background-image: url(frontend/images/bg_3.jpg);">
         <div class="container">
             <div class="row justify-content-end">
                 <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
@@ -182,7 +189,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section class="ftco-section testimony-section">
         <div class="container">

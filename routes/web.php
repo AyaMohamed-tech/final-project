@@ -31,7 +31,7 @@ Route::post('postcheckout', 'ClientController@postcheckout');
 Route::post('/createaccount', 'ClientController@createaccount');
 Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
-Route::get('/contactus', 'ClientController@contactus'); 
+Route::get('/contactus', 'ClientController@contactus');
 Route::post('/datacontact', 'ClientController@datacontact');
 Route::get('/profile', 'ClientController@profile');
 
@@ -49,7 +49,8 @@ Route::get('/view_pdf/{id}', 'PdfController@viewpdf');
 
 Route::get('/admin', 'AdminController@dashboard');
 Route::get('/orders', 'AdminController@orders');
-
+Route::get('/new_orders', 'AdminController@new_orders');
+Route::get('/delivered/{id}', 'AdminController@delivered');
 Route::get('/loginadmin', 'AdminController@login');
 //Route::get('/signupadmin', 'AdminController@signup');
 //Route::post('/createaccountadmin', 'AdminController@createaccount');
@@ -85,4 +86,3 @@ Route::post('/updateslider', 'SliderController@updateslider');
 Route::get('/delete_slider/{id}', 'SliderController@delete_slider');
 Route::get('/unactivate_slider/{id}', 'SliderController@unactivate_slider');
 Route::get('/activate_slider/{id}', 'SliderController@activate_slider');
-
