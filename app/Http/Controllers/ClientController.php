@@ -171,21 +171,16 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> 7c6022f435ce6882f8c6aa940bb7be41a6a2991f
     //==================================
-    
+
 
     public function contactus()
     {
-      
-        return view('client.contactus');
 
+        return view('client.contactus');
     }
-    
-//===================================================
+
+    //===================================================
     public function datacontact(Request $request)
     {
         $this->validate($request, [
@@ -202,12 +197,11 @@ class ClientController extends Controller
         $contact->message = $request->input('message');
 
         $contact->save();
-        // return view('client.contactus'); 
+        // return view('client.contactus');
         // return view('client.contactus')->with('status' , 'Your Message has been sent successfully');
-         return back()->with('status' , 'Your Message has been sent successfully');
-
+        return back()->with('status', 'Your Message has been sent successfully');
     }
-   
+
     //===================about function========================================
     public function about()
     {
@@ -215,30 +209,33 @@ class ClientController extends Controller
     }
 
     //===================privacypolicy===============================
-    public function privacypolicy(){
+    public function privacypolicy()
+    {
         return view('client.privacypolicy');
     }
 
- //===================terms===============================
- public function terms(){
-    return view('client.terms');
-}
+    //===================terms===============================
+    public function terms()
+    {
+        return view('client.terms');
+    }
 
- //===================shipping===============================
- public function shipping(){
-    return view('client.shipping');
-}
+    //===================shipping===============================
+    public function shipping()
+    {
+        return view('client.shipping');
+    }
 
- //===================returns===============================
- public function returns(){
-    return view('client.returns');
-}
+    //===================returns===============================
+    public function returns()
+    {
+        return view('client.returns');
+    }
 
- //===================profile=============================
+    //===================profile=============================
 
-public function profile()
-{
-    return view('client.profile');
-}
-
+    public function profile()
+    {
+        return view('client.profile');
+    }
 }
