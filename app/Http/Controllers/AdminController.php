@@ -45,26 +45,26 @@ class AdminController extends Controller
     {
         return view('admin.loginadmin');
     }
-    public function signup()
-    {
-        return view('admin.signupadmin');
-    }
-    public function createaccount(Request $request)
-    {
+    // public function signup()
+    // {
+    //     return view('admin.signupadmin');
+    // }
+    // public function createaccount(Request $request)
+    // {
 
-        $this->validate($request, [
-            'email' => 'email|required|unique:clients',
-            'password' => 'required|min:4'
-        ]);
-        $admin = new Admin();
-        $admin->email = $request->input('email');
-        $admin->password = bcrypt($request->input('password'));  //hash password
+    //     $this->validate($request, [
+    //         'email' => 'email|required|unique:clients',
+    //         'password' => 'required|min:4'
+    //     ]);
+    //     $admin = new Admin();
+    //     $admin->email = $request->input('email');
+    //     $admin->password = bcrypt($request->input('password'));  //hash password
 
-        $admin->save();
+    //     $admin->save();
 
-        //    return back()->with('status' , 'Your account has been created successfully');
-        return redirect('/loginadmin');
-    }
+    //     //    return back()->with('status' , 'Your account has been created successfully');
+    //     return redirect('/loginadmin');
+    // }
 
 
     public function accsesaccount(Request $request)
@@ -89,11 +89,11 @@ class AdminController extends Controller
         }
     }
 
-    // public function logout()
-    // {
-    //     Session::forget('admin');
-    //     return back();
-    // }
+    public function logout()
+    {
+        Session::forget('admin');
+        return back();
+    }
 
 
 

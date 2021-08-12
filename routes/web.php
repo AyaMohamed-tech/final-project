@@ -49,10 +49,10 @@ Route::get('/admin', 'AdminController@dashboard');
 Route::get('/orders', 'AdminController@orders');
 
 Route::get('/loginadmin', 'AdminController@login');
-Route::get('/signupadmin', 'AdminController@signup');
-Route::post('/createaccountadmin', 'AdminController@createaccount');
+//Route::get('/signupadmin', 'AdminController@signup');
+//Route::post('/createaccountadmin', 'AdminController@createaccount');
 Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
-// Route::get('/logoutadmin', 'AdminController@logout');
+ Route::get('/logoutadmin', 'AdminController@logout');
 
 
 Route::get('/addcategory', 'CategoryController@addcategory');

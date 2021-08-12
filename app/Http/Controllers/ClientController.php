@@ -128,10 +128,12 @@ class ClientController extends Controller
     {
 
         $this->validate($request, [
+            'name' => 'required|min:4',
             'email' => 'email|required|unique:clients',
-            'password' => 'required|min:4'
+            'password' => 'required|min:4',
         ]);
         $client = new Client();
+        $client->name = $request->input('name');
         $client->email = $request->input('email');
         $client->password = bcrypt($request->input('password'));  //hash password
 
@@ -169,7 +171,6 @@ class ClientController extends Controller
         Session::forget('client');
         return back();
     }
-<<<<<<< HEAD
     //==================================
     
 
@@ -203,7 +204,6 @@ class ClientController extends Controller
 
     }
    
-=======
     //===================about function========================================
     public function about()
     {
@@ -232,5 +232,4 @@ class ClientController extends Controller
 
 
 
->>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
 }
