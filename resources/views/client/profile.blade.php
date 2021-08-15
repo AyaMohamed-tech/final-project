@@ -43,7 +43,6 @@
                         <img src="frontend/images/product-3.jpg" class="img-fluid d-block" alt="... ">
                         <h6 class="card-subtitle mb-2 text-muted">product name</h6>
                         <h6 class="card-subtitle mb-2 text-muted">product price</h6>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
 
                     </div>
                 </div>
@@ -55,7 +54,6 @@
                         <img src="frontend/images/product-4.jpg" class="img-fluid d-block" alt="... ">
                         <h6 class="card-subtitle mb-2 text-muted">product name</h6>
                         <h6 class="card-subtitle mb-2 text-muted">product price</h6>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
 
                     </div>
                 </div>
@@ -67,7 +65,6 @@
                         <img src="frontend/images/product-5.jpg" class="img-fluid d-block" alt="... ">
                         <h6 class="card-subtitle mb-2 text-muted">product name</h6>
                         <h6 class="card-subtitle mb-2 text-muted">product price</h6>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
 
                     </div>
                 </div>
@@ -79,7 +76,6 @@
                         <img src="frontend/images/product-7.jpg" class="img-fluid d-block" alt="... ">
                         <h6 class="card-subtitle mb-2 text-muted">product name</h6>
                         <h6 class="card-subtitle mb-2 text-muted">product price</h6>
-                        <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
 
                     </div>
                 </div>

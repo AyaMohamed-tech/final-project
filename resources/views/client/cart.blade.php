@@ -73,7 +73,7 @@
                                                         value="{{ $product['product_id'] }}" min="1" max="100">
 
                                                 </div>
-                                                {{ Form::submit('Update', ['class' => 'btn btn-success']) }}
+                                                <!-- {{ Form::submit('Update', ['class' => 'btn btn-success']) }} -->
                                                 {!! Form::close() !!}
 
 
@@ -129,22 +129,22 @@
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
                         <h3>Cart Totals</h3>
-                        <p class="d-flex">
+                        <!-- <p class="d-flex">
                             <span>Subtotal</span>
                             <span>{{ $sub_total }}</span>
-                        </p>
-                        <p class="d-flex">
+                        </p> -->
+                        <!-- <p class="d-flex">
                             <span>Delivery</span>
                             <span>${{ $delivery }}</span>
-                        </p>
-                        <p class="d-flex">
+                        </p> -->
+                        <!-- <p class="d-flex">
                             <span>Discount</span>
                             <span>${{ $discount }}</span>
-                        </p>
+                        </p> -->
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>$80</span>
+                            <span>${{ Session::get('cart')->totalPrice }}</span>
                         </p>
                     </div>
                     <p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

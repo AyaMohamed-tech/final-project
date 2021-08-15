@@ -134,7 +134,7 @@
                                 @if (time() - $product->created_at->timestamp > 1000)
                                     {{-- 172800 second = 2 Days --}}
                                     {!! Form::hidden($cat_discount = 0.3) !!}
-                                    <span class="status">30%</span>
+                                    <!-- <span class="status">30%</span> -->
                                 @endif
                                 <div class="overlay"></div>
                             </a>
