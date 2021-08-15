@@ -73,7 +73,7 @@
                                                         value="{{ $product['product_id'] }}" min="1" max="100">
 
                                                 </div>
-                                                <!-- {{ Form::submit('Update', ['class' => 'btn btn-success']) }} -->
+                                                {{ Form::submit('Update', ['class' => 'btn btn-success']) }}
                                                 {!! Form::close() !!}
 
 
