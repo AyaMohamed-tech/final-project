@@ -232,17 +232,21 @@ class ClientController extends Controller
         return view('client.returns');
     }
 
-public function profile()
-{
-    if (!Session::has('client')) {
-        return redirect('/login');
+    public function profile()
+    {
+        if (!Session::has('client')) {
+            return redirect('/login');
+        }
+
+        $clients = Client::get();
+
+        // dd(Session::get('client')->name);
+        $orders = Order::where('name', Session::get('client')->name)->get();
+        // dd($orders);
+        $orders->transform(function ($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return view('client.profile')->with(['clients' => $clients, 'orders' => $orders]);
     }
-
-    $clients = Client::get();
-  
-    
-    return view('client.profile')->with('clients',$clients);
-}
-
-
 }

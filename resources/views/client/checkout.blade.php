@@ -35,7 +35,8 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="firstname">Full Name</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" value="{{ Session::get('client')->name }} "
+                                    name="name">
                             </div>
                         </div>
 
