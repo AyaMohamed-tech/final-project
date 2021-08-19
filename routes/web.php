@@ -56,6 +56,9 @@ Route::get('/signupadmin', 'AdminController@signup');
 Route::post('/createaccountadmin', 'AdminController@createaccount');
 Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
  Route::get('/logoutadmin', 'AdminController@logout');
+// ----------------- clients route-------------------------------
+Route::get('/clients','AdminController@clients');
+Route::get('/delete_client/{id}','AdminController@delete_client');
 
 
 Route::get('/addcategory', 'CategoryController@addcategory');
