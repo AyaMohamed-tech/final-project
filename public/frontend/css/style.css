@@ -13591,8 +13591,6 @@ textarea.form-control {
 }
 
 @keyframes loader-dash {
-<<<<<<< HEAD
-    0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
     }
@@ -13762,20 +13760,18 @@ textarea.form-control {
         transform: rotate(360deg);
     }
 }
-=======
-  0% {
-    stroke-dasharray: 1, 200;
+  /* 0% {
     stroke-dashoffset: 0; }
   50% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -35px; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; } }
+    stroke-dashoffset: -136px; } } */
 
 
 
-    /*---------------about as---------------------*/
+    /*---------------about us---------------------*/
     .about{
       width: 80%;
       padding: 10px;
@@ -13809,4 +13805,3 @@ textarea.form-control {
       font-style: italic;
       font-size: 18px;
     }
->>>>>>> 6779ee205eae60cad15578df19fbe418d1d3fa7a
