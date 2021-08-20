@@ -35,6 +35,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/sliders') }}">Sliders</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/orders') }}">Orders</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/new_orders') }}">New Orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{URL::to('/clients')}}">Clients</a></li>
                 </ul>
             </div>
         </li>

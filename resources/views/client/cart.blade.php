@@ -144,7 +144,7 @@
                         <hr>
                         <p class="d-flex total-price">
                             <span>Total</span>
-                            <span>80$</span>
+                            <span>$300</span>
                         </p>
                     </div>
                     <p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>

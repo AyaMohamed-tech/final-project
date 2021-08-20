@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Admin;
 use Illuminate\Http\Request;
 use App\Order;
+use App\Client;
 
 
 class AdminController extends Controller
@@ -109,5 +110,21 @@ class AdminController extends Controller
     {
         Session::forget('admin');
         return back();
+    }
+
+    // ----------------clients action-----------------
+    public function clients(){
+        $clients = Client::get();
+
+        return view('admin.clients')->with('clients',$clients);
+    }
+    public function delete_client($id){
+
+        $client = Client::find($id);
+
+        $client->delete();
+
+       
+        return redirect('/clients')->with('status','The Client has been deleted successfully');
     }
 }
