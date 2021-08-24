@@ -28,14 +28,14 @@
     </div>
 
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="col-4 mt-5">
             <h4>MY FAVOURITES :</h4>
         </div>
-    </div>
+    </div> -->
 
     <div class="container mt-4">
-        <div class="row">
+        <!-- <div class="row">
 
             <div class="col-md-4">
                 <div class="card p-md-5 mt-3">
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <div class="card mt-5 mb-5">
             {{ Form::hidden('', $increment = 1) }}
