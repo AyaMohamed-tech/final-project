@@ -66,11 +66,15 @@
                                                 <div class="input-group mb-3">
                                                     <input type="number" name="quantity"
                                                         class="quantity form-control input-number"
-                                                        value="{{ $product['qty'] }}" min="1" max="100">
+                                                        value="{{ $product['qty'] }}" min=".25" max="100" step=".25">
 
                                                     <input type="hidden" name="id"
                                                         class="quantity form-control input-number"
                                                         value="{{ $product['product_id'] }}" min="1" max="100">
+
+                                                        <!-- <input type="number" name="part_quantity"
+                                                        class="part_quantity form-control input-number" value="{{ $product['part_qty'] }}"
+                                                        min="0" max=".75" step=".25"> -->
 
                                                 </div>
                                                 {{ Form::submit('Update', ['class' => 'btn btn-success']) }}
@@ -79,7 +83,7 @@
 
                                             </td>
 
-                                            <td class="total">${{ $product['product_price'] * $product['qty'] }}</td>
+                                            <td class="total">${{ $product['product_price'] * ($product['qty']+$product['part_qty'])  }}</td>
                                         </tr><!-- END TR-->
                                     @endforeach
                                 @else
