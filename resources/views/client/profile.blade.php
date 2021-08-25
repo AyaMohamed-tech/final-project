@@ -6,6 +6,25 @@
 
 @section('content')
 
+<div class="container">
+
+<div class="card " >
+  <h5 class="card-header">PERSONAL DATA :</h5>
+  <div class="card-body">
+    <!-- <h5 class="card-title">PERSONAL DATA</h5> -->
+  
+    <p class="card-text">   full name : {{ Session::get('client')->name }} <br> email adress :
+                                {{ Session::get('client')->email }}</p>     </p>
+    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+  </div>
+</div>
+</div>
+
+
+<!-- 
+
+
+
     <div class="person">
         <div class="container">
             <div class="card mb-3 px-0">
@@ -25,10 +44,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="col-4 mt-5">
             <h4>MY FAVOURITES :</h4>
         </div>
@@ -81,7 +100,9 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
+
+        <div class="container">
 
         <div class="card mt-5 mb-5">
             {{ Form::hidden('', $increment = 1) }}
@@ -122,5 +143,5 @@
                 </div>
             </div>
         </div>
-
+</div>
     @endsection

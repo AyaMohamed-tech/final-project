@@ -37,9 +37,22 @@
             </div>
             <div class="row">
                 <!-------------viewing shop page dynamically------------>
+
+                <div class="container">
+            <div class="row justify-content-center mb-3 pb-3">
+                <div class="col-md-12 heading-section text-center ftco-animate">
+                    <span class="subheading">Featured Products</span>
+                    <h2 class="mb-4">Our Products</h2>
+                    <p>price for 1 kilo.</p>
+                </div>
+            </div>
+        </div>
                 @foreach ($products as $product)
                     <div class="col-md-6 col-lg-3 ftco-animate">
+
+                    
                         <div class="product">
+
                             <a href="#" class="img-prod"><img class="img-fluid"
                                     src="/storage/product_images/{{ $product->product_image }}" alt="">
                                 {{-- <span class="status">30%</span> --}}
