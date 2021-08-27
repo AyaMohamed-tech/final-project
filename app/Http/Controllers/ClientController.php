@@ -131,11 +131,16 @@ class ClientController extends Controller
             'name' => 'required|min:4',
             'email' => 'email|required|unique:clients',
             'password' => 'required|min:4',
+            'password_confirmation' => 'required_with:password|same:password|min:4',
+            'address' => 'required|min:5'
         ]);
+
         $client = new Client();
         $client->name = $request->input('name');
         $client->email = $request->input('email');
         $client->password = bcrypt($request->input('password'));  //hash password
+        $client->password_confirmation = bcrypt($request->input('password_confirmation'));  //hash password
+        $client->address = $request->input('address');
 
         $client->save();
 

@@ -160,9 +160,7 @@ class ProductController extends Controller
     }
     public function addToCart($id)
     {
-        if(!Session::has('admin')){
-            return redirect('/loginadmin');
-        }
+       
         $product = Product::find($id);
         /* dd($product); */
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
