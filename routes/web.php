@@ -58,7 +58,8 @@ Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
  Route::get('/logoutadmin', 'AdminController@logout');
 // ----------------- clients route-------------------------------
 Route::get('/clients','AdminController@clients');
-Route::get('/delete_client/{id}','AdminController@delete_client');
+Route::get('/activate_client/{id}', 'AdminController@activate_client');
+Route::get('/unactivate_client/{id}', 'AdminController@unactivate_client');
 
 
 Route::get('/addcategory', 'CategoryController@addcategory');

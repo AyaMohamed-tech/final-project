@@ -118,13 +118,26 @@ class AdminController extends Controller
 
         return view('admin.clients')->with('clients',$clients);
     }
-    public function delete_client($id){
-
+   
+    public function activate_client($id)
+    {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
         $client = Client::find($id);
+        $client->status = 1;
+        $client->update();
+        return redirect('/clients')->with('status', 'The ' . $client->name . ' Client status has been Activated Successfuly');
+    }
 
-        $client->delete();
-
-       
-        return redirect('/clients')->with('status','The Client has been deleted successfully');
+    public function unactivate_client($id)
+    {
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
+        $client = Client::find($id);
+        $client->status = 0;
+        $client->update();
+        return redirect('/clients')->with('status', 'The ' . $client->name . ' Client status has been Unactivated Successfuly');
     }
 }

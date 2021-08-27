@@ -24,6 +24,7 @@
                             <th>Order #</th>
                             <th>Client Name</th>
                             <th>Email</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                       </thead>
@@ -33,9 +34,27 @@
                             <td>{{$increment}}</td>
                             <td>{{$client->name}}</td>
                             <td>{{$client->email}}</td>
+                            @if ($client->status == 1)
                             <td>
-                            <a href="/delete_client/{{$client->id}}" class="btn btn-outline-danger" id="delete">Delete</a>
+                              <label class="badge badge-success">Activated</label>
                             </td>
+
+                           @else
+
+                             <td>
+                               <label class="badge badge-danger">Unactivated</label>
+                             </td>
+
+                           @endif
+                           <td>
+                           @if ($client->status == 1)
+                                                <a href="/unactivate_client/{{ $client->id }}"
+                                                    class="btn btn-outline-warning">Unactivate</a>
+                                            @else
+                                                <a href="/activate_client/{{ $client->id }}"
+                                                    class="btn btn-outline-success">activate</a>
+                                            @endif
+                           </td>
                         </tr> 
                         {{Form::hidden('',$increment=$increment+1)}}
 
