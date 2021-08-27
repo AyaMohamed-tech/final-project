@@ -43,7 +43,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="lastname">Address</label>
-                                <input type="text" class="form-control" name="address">
+                                <input type="text" class="form-control" name="address" value="{{ Session::get('client')->address }} ">
                             </div>
                         </div>
 
