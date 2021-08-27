@@ -5,7 +5,7 @@ Sign up
 @section('content')
 	
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url(frontend/login/images/bg-01.jpg);">
+		<div class="container-login100" style="background-image: url(frontend/login/images/bg-04.jpg);">
 			<div class="wrap-login1001">
 				@if(Session::has('status'))
 				   <div class="alert alert-success">
