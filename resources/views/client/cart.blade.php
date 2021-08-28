@@ -132,7 +132,7 @@
                 </div> --}}
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
                     <div class="cart-total mb-3">
-                        <h3>Cart Totals</h3>
+                        <h3>Confirm your purchase</h3>
                         <!-- <p class="d-flex">
                             <span>Subtotal</span>
                             <span>{{ $sub_total }}</span>
@@ -145,11 +145,11 @@
                             <span>Discount</span>
                             <span>${{ $discount }}</span>
                         </p> -->
-                        <hr>
+                         <hr>
                         <p class="d-flex total-price">
-                            <span>Total</span>
-                            <span>$300</span>
-                        </p>
+                            <span>this site says</span>
+                            <span>enjoy^^</span>
+                        </p> 
                     </div>
                     <p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
                 </div>
