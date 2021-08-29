@@ -201,45 +201,56 @@
                     <div class="carousel-testimony owl-carousel">
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-5" style="background-image: url(frontend/images/person_1.jpg)">
+                                <div class="user-img mb-5" style="background-image: url(frontend/images/one.jpeg)">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-5 pl-4 line">Choose your healthy food carefully, pay attention to everything that is green.</p>
+                                    <p class="name">Aya Mohammed</p>
                                     <span class="position">Marketing Manager</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-5" style="background-image: url(frontend/images/person_2.jpg)">
+                                <div class="user-img mb-5" style="background-image: url(frontend/images/4.jpeg)">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-5 pl-4 line">Choose your healthy food carefully, pay attention to everything that is green.</p>
+                                    <p class="name">Asmaa Esmail</p>
                                     <span class="position">Interface Designer</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-5" style="background-image: url(frontend/images/person_3.jpg)">
+                                <div class="user-img mb-5" style="background-image: url(frontend/images/3.jpeg )">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-5 pl-4 line">Choose your healthy food carefully, pay attention to everything that is green.</p>
+                                    <p class="name">Alaa Mahmoud </p>
+                                    <span class="position">Web Developer</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="testimony-wrap p-4 pb-5">
+                                <div class="user-img mb-5" style="background-image: url(frontend/images/person_4.jpg)">
+                                    <span class="quote d-flex align-items-center justify-content-center">
+                                        <i class="icon-quote-left"></i>
+                                    </span>
+                                </div>
+                                <div class="text text-center">
+                                    <p class="mb-5 pl-4 line">Choose your healthy food carefully, pay attention to everything that is green.</p>
+                                    <p class="name">Ahmed Gafar</p>
                                     <span class="position">UI Designer</span>
                                 </div>
                             </div>
@@ -252,24 +263,22 @@
                                     </span>
                                 </div>
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
-                                    <span class="position">Web Developer</span>
+                                    <p class="mb-5 pl-4 line">Choose your healthy food carefully, pay attention to everything that is green.</p>
+                                    <p class="name">Kholoud Osama</p>
+                                    <span class="position">UI Designer</span>
                                 </div>
                             </div>
                         </div>
                         <div class="item">
                             <div class="testimony-wrap p-4 pb-5">
-                                <div class="user-img mb-5" style="background-image: url(frontend/images/person_1.jpg)">
+                                <div class="user-img mb-5" style="background-image: url(frontend/images/2.jpeg)">
                                     <span class="quote d-flex align-items-center justify-content-center">
                                         <i class="icon-quote-left"></i>
                                     </span>
                                 </div>
                                 <div class="text text-center">
-                                    <p class="mb-5 pl-4 line">Far far away, behind the word mountains, far from the
-                                        countries Vokalia and Consonantia, there live the blind texts.</p>
-                                    <p class="name">Garreth Smith</p>
+                                    <p class="mb-5 pl-4 line">Choose your healthy food carefully, pay attention to everything that is green.</p>
+                                    <p class="name">Eslam Abd_elqader</p>
                                     <span class="position">System Analyst</span>
                                 </div>
                             </div>
