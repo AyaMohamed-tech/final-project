@@ -60,6 +60,8 @@ Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
 Route::get('/clients','AdminController@clients');
 Route::get('/activate_client/{id}', 'AdminController@activate_client');
 Route::get('/unactivate_client/{id}', 'AdminController@unactivate_client');
+Route::get('/usersmessages','AdminController@usersmessages');
+Route::get('/delete_message/{id}', 'AdminController@delete_message');
 
 
 Route::get('/addcategory', 'CategoryController@addcategory');

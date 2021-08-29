@@ -10,7 +10,8 @@ use App\Admin;
 use Illuminate\Http\Request;
 use App\Order;
 use App\Client;
-
+use App\Contact;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class AdminController extends Controller
 {
@@ -139,5 +140,27 @@ class AdminController extends Controller
         $client->status = 0;
         $client->update();
         return redirect('/clients')->with('status', 'The ' . $client->name . ' Client status has been Unactivated Successfuly');
+    }
+
+    //---------------usersMessages------------------------
+
+    public function usersmessages(){
+        $contacts = Contact::get();
+
+        return view('admin.usersmessages')->with('contacts',$contacts);
+    }
+
+    public function delete_message($id){
+        if(!Session::has('admin')){
+            return redirect('/loginadmin');
+        }
+
+        $contact = Contact::find($id);
+
+        $contact->delete();
+
+       
+       return redirect('/usersmessages')->with('status','The Message has been deleted successfully');
+
     }
 }
