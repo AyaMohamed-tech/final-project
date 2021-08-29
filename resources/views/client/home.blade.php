@@ -86,9 +86,7 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Featured Categories</span>
                     <h2 class="mb-4">Our Categories</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, excepturi.</p>
                 </div>
             </div>
         </div>
@@ -114,9 +112,8 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Featured Products</span>
                     <h2 class="mb-4">Our Products</h2>
-                    <p>price for 1 kilo.</p>
+                    <span class="subheading">price for 1 kilo.</span>
                 </div>
             </div>
         </div>
@@ -132,9 +129,7 @@
                             <a href="#" class="img-prod"><img class="img-fluid"
                                     src="/storage/product_images/{{ $product->product_image }}" alt="">
                                 @if (time() - $product->created_at->timestamp > 1000)
-                                    {{-- 172800 second = 2 Days --}}
                                     {!! Form::hidden($cat_discount = 0.3) !!}
-                                    <!-- <span class="status">30%</span> -->
                                 @endif
                                 <div class="overlay"></div>
                             </a>

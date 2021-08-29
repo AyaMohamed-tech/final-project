@@ -39,18 +39,17 @@
                 <!-------------viewing shop page dynamically------------>
 
                 <div class="container">
-            <div class="row justify-content-center mb-3 pb-3">
-                <div class="col-md-12 heading-section text-center ftco-animate">
-                    <span class="subheading">Featured Products</span>
-                    <h2 class="mb-4">Our Products</h2>
-                    <p>price for 1 kilo.</p>
+                    <div class="row justify-content-center mb-3 pb-3">
+                        <div class="col-md-12 heading-section text-center ftco-animate">
+                            <h2 class="mb-4">Our Products</h2>
+                            <span class="subheading">price for 1 kilo.</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
                 @foreach ($products as $product)
                     <div class="col-md-6 col-lg-3 ftco-animate">
 
-                    
+
                         <div class="product">
 
                             <a href="#" class="img-prod"><img class="img-fluid"
@@ -87,17 +86,6 @@
             </div>
             <div class="row mt-5">
                 <div class="col text-center">
-                    <!-- <div class="block-27">
-                      <ul>
-                        <li><a href="#">&lt;</a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">&gt;</a></li>
-                      </ul>
-                    </div> -->
                 </div>
             </div>
         </div>
