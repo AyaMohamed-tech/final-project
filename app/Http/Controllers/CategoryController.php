@@ -31,7 +31,7 @@ class CategoryController extends Controller
 
 
         if (!$checkcat) {
-            if ($request->hasFile('category_image')) {
+            
                 if ($request->hasFile('category_image')) {
                     $fileNameWithExt = $request->file('category_image')->getClientOriginalName();
                     $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
@@ -41,7 +41,7 @@ class CategoryController extends Controller
                 } else {
                     $fileNameToStore = 'noimage.jpg';
                 }
-            }
+            
             $category = new Category();
             $category->category_name = $request->input('category_name');
             $category->category_image = $fileNameToStore;
