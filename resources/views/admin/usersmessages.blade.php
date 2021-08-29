@@ -9,7 +9,7 @@
 
 <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Clients</h4>
+              <h4 class="card-title">Users Messages</h4>
                   @if(Session::has('status'))
                       <div class="alert alert-success">
                             {{Session::get('status')}}
