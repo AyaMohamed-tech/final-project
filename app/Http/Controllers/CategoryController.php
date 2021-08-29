@@ -15,7 +15,7 @@ class CategoryController extends Controller
 {
     public function addcategory()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         return view('admin.addcategory');
@@ -54,7 +54,7 @@ class CategoryController extends Controller
     }
     public function categories()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $categories = Category::get();
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     }
     public function edit($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $category = Category::find($id);
@@ -71,7 +71,7 @@ class CategoryController extends Controller
 
     public function updatecategory(Request $request)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $this->validate($request, [
@@ -109,7 +109,7 @@ class CategoryController extends Controller
     }
     public function delete($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $category = Category::find($id);
@@ -123,13 +123,8 @@ class CategoryController extends Controller
 
     public function view_by_cat($name)
     {
-        if(!Session::has('admin')){
-            return redirect('/loginadmin');
-        }
-
         $categories = Category::get();
         $products = Product::where('product_category', $name)->get();
-
         return view('client.shop')->with('products', $products)->with('categories', $categories);
     }
 }
