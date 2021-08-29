@@ -55,8 +55,7 @@
                                             </td>
 
                                             <td class="product-name">
-                                                <h3>${{ $product['product_name'] }}</h3>
-                                                <p>Far far away, behind the word mountains, far from the countries</p>
+                                                <h3>{{ $product['product_name'] }}</h3>
                                             </td>
 
                                             <td class="price">{{ $product['product_price'] }}</td>
@@ -131,8 +130,8 @@
                     <p><a href="checkout.html" class="btn btn-primary py-3 px-4">Estimate</a></p>
                 </div> --}}
                 <div class="col-lg-4 mt-5 cart-wrap ftco-animate">
-                    <div class="cart-total mb-3">
-                        <h3>Confirm your purchase</h3>
+                    <div class="mb-3">
+                        <!-- <h3>Confirm your purchase</h3> -->
                         <!-- <p class="d-flex">
                             <span>Subtotal</span>
                             <span>{{ $sub_total }}</span>
@@ -145,11 +144,11 @@
                             <span>Discount</span>
                             <span>${{ $discount }}</span>
                         </p> -->
-                         <hr>
+                         <!-- <hr>
                         <p class="d-flex total-price">
                             <span>this site says</span>
                             <span>enjoy^^</span>
-                        </p> 
+                        </p>  -->
                     </div>
                     <p><a href="/checkout" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
                 </div>

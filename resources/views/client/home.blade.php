@@ -88,7 +88,7 @@
                 <div class="col-md-12 heading-section text-center ftco-animate">
                     <span class="subheading">Featured Categories</span>
                     <h2 class="mb-4">Our Categories</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, excepturi.</p>
+                    <p>Choose your healthy food carefully, pay attention to everything that is green</p>
                 </div>
             </div>
         </div>
@@ -177,7 +177,7 @@
                 <div class="col-md-6 heading-section ftco-animate deal-of-the-day ftco-animate">
                     <span class="subheading">Best Price For You</span>
                     <h2 class="mb-4">Deal of the day</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                    <p>Choose your healthy food carefully, pay attention to everything that is green</p>
                     <h3><a href="#">Spinach</a></h3>
                     <span class="price">$10 <a href="#">now $5 only</a></span>
                     <div id="timer" class="d-flex mt-5">
@@ -197,8 +197,7 @@
                 <div class="col-md-7 heading-section ftco-animate text-center">
                     <span class="subheading">Testimony</span>
                     <h2 class="mb-4">Our satisfied customer says</h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live
-                        the blind texts. Separated they live in</p>
+                    <p>Choose your healthy food carefully, pay attention to everything that is green</p>
                 </div>
             </div>
             <div class="row ftco-animate">
