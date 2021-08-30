@@ -65,7 +65,7 @@ class CategoryController extends Controller
         if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         return view('admin.editcategory')->with('category', $category);
     }
 

@@ -66,7 +66,7 @@ class SliderController extends Controller
     }
     public function edit_slider($id){
 
-        $slider = Slider::find($id);
+        $slider = Slider::findOrFail($id);
 
         return view('admin.editslider')->with('slider',$slider);
         
@@ -142,7 +142,7 @@ class SliderController extends Controller
             return redirect('/loginadmin');
         }
 
-        $slider = Slider::find($id);
+        $slider = Slider::findOrFail($id);
 
         $slider->status = 0;
 
@@ -156,7 +156,7 @@ class SliderController extends Controller
             return redirect('/loginadmin');
         }
 
-        $slider = Slider::find($id);
+        $slider = Slider::findOrFail($id);
 
         $slider->status = 1;
 

@@ -89,7 +89,7 @@ class ProductController extends Controller
             return redirect('/loginadmin');
         }
         $categories = Category::All()->pluck('category_name', 'category_name');
-        $product = product::find($id);
+        $product = product::findOrFail($id);
         return view('admin.editproduct')->with('product', $product)->with('categories', $categories);
     }
 
@@ -142,7 +142,7 @@ class ProductController extends Controller
         if(!Session::has('admin')){
             return redirect('/loginadmin');
         }
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->status = 1;
         $product->update();
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Activated Successfuly');
@@ -153,7 +153,7 @@ class ProductController extends Controller
         if(!Session::has('admin')){
             return redirect('/loginadmin');
         }
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->status = 0;
         $product->update();
         return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
