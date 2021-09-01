@@ -46,12 +46,12 @@
                             </td>
                             @endif
                             <td>
-                              <button class="btn btn-outline-primary" onclick="window.location = '{{url('/edit_slider/'.$slider->id)}}'">Edit</button>
-                              <a href="/delete_slider/{{$slider->id}}" class="btn btn-outline-danger" id="delete">Delete</a>
+                              <button class="btn btn-outline-primary" onclick="window.location = '{{url('/admin/edit_slider/'.$slider->id)}}'">Edit</button>
+                              <a href="/admin/delete_slider/{{$slider->id}}" class="btn btn-outline-danger" id="delete">Delete</a>
                               @if($slider->status==1)
-                              <button class="btn btn-outline-warning" onclick="window.location = '{{url('/unactivate_slider/'.$slider->id)}}'">Unactivate</button>
+                              <button class="btn btn-outline-warning" onclick="window.location = '{{url('/admin/unactivate_slider/'.$slider->id)}}'">Unactivate</button>
                               @else
-                              <button class="btn btn-outline-success" onclick="window.location = '{{url('/activate_slider/'.$slider->id)}}'">Activate</button>
+                              <button class="btn btn-outline-success" onclick="window.location = '{{url('/admin/activate_slider/'.$slider->id)}}'">Activate</button>
                               @endif
                             </td>
                         </tr>

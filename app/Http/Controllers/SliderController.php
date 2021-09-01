@@ -54,7 +54,7 @@ class SliderController extends Controller
                         
          $slider->save();
                         
-         return redirect('/addslider')->with('status','The Slider has been saved successfully');
+         return redirect('/admin/addslider')->with('status','The Slider has been saved successfully');
 
     }
     public function sliders(){
@@ -115,7 +115,7 @@ class SliderController extends Controller
          
              $slider->update();
 
-             return redirect('/sliders')->with('status','The Slider has been updated successfully');
+             return redirect('/admin/sliders')->with('status','The Slider has been updated successfully');
     }
 
     public function delete_slider($id){
@@ -132,7 +132,7 @@ class SliderController extends Controller
        $slider->delete();
 
        
-       return redirect('/sliders')->with('status','The Slider has been deleted successfully');
+       return redirect('/admin/sliders')->with('status','The Slider has been deleted successfully');
 
     }
 
@@ -148,7 +148,7 @@ class SliderController extends Controller
 
         $slider->update();
 
-        return redirect('/sliders')->with('status','The Slider status has been unactivated successfully');
+        return redirect('/admin/sliders')->with('status','The Slider status has been unactivated successfully');
     }
     public function activate_slider($id){
         
@@ -162,7 +162,7 @@ class SliderController extends Controller
 
         $slider->update();
 
-        return redirect('/sliders')->with('status','The Slider status has been activated successfully');
+        return redirect('/admin/sliders')->with('status','The Slider status has been activated successfully');
     }
 
     

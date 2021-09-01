@@ -52,16 +52,16 @@
                                         @endif
                                         <td>
                                             <a class="btn btn-outline-primary"
-                                                onclick="window.location = '{{ url('/edit_product/' . $product->id) }}' ">Edit</a>
-                                            <a href="/delete_product/{{ $product->id }}" class="btn btn-outline-danger"
+                                                onclick="window.location = '{{ url('/admin/edit_product/' . $product->id) }}' ">Edit</a>
+                                            <a href="/admin/delete_product/{{ $product->id }}" class="btn btn-outline-danger"
                                                 id='delete'>
                                                 Delete
                                             </a>
                                             @if ($product->status == 1)
-                                                <a href="/unactivate_product/{{ $product->id }}"
+                                                <a href="/admin/unactivate_product/{{ $product->id }}"
                                                     class="btn btn-outline-warning">Unactivate</a>
                                             @else
-                                                <a href="/activate_product/{{ $product->id }}"
+                                                <a href="/admin/activate_product/{{ $product->id }}"
                                                     class="btn btn-outline-success">activate</a>
                                             @endif
                                         </td>

@@ -47,9 +47,9 @@ class CategoryController extends Controller
             $category->category_image = $fileNameToStore;
             $category->save();
 
-            return redirect('/addcategory')->with('status', 'The ' . $category->category_name . ' Category has been saved successfully');
+            return redirect('/admin/addcategory')->with('status', 'The ' . $category->category_name . ' Category has been saved successfully');
         } else {
-            return redirect('/addcategory')->with('status1', 'The ' . $request->input('category_name') . ' Category already exist');
+            return redirect('/admin/addcategory')->with('status1', 'The ' . $request->input('category_name') . ' Category already exist');
         }
     }
     public function categories()
@@ -105,7 +105,7 @@ class CategoryController extends Controller
             ->where('product_category', $old_cat)
             ->update($data);
         $category->update();
-        return redirect('/categories')->with('status', 'The ' . $category->category_name . ' Category has been updated successfully');
+        return redirect('/admin/categories')->with('status', 'The ' . $category->category_name . ' Category has been updated successfully');
     }
     public function delete($id)
     {
@@ -118,7 +118,7 @@ class CategoryController extends Controller
         }
         $category->delete();
 
-        return redirect('/categories')->with('status', 'The ' . $category->category_name . ' Category has been deleted successfully');
+        return redirect('/admin/categories')->with('status', 'The ' . $category->category_name . ' Category has been deleted successfully');
     }
 
     public function view_by_cat($name)

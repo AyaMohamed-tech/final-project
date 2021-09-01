@@ -37,7 +37,7 @@
                             <td>{{$contact->email}}</td>
                             <td>{{$contact->subject}}</td>
                             <td>{{$contact->message}}</td>
-                            <td> <a href="/delete_message/{{$contact->id}}" class="btn btn-outline-danger" id="delete">Delete</a></td>
+                            <td> <a href="/admin/delete_message/{{$contact->id}}" class="btn btn-outline-danger" id="delete">Delete</a></td>
                 
                         </tr> 
                         {{Form::hidden('',$increment=$increment+1)}}

@@ -17,7 +17,7 @@ class PdfController extends Controller
 
             return $pdf->stream();
         } catch (\Exception $e) {
-            return redirect('/orders')->with('error', $e->getMessage());
+            return redirect('/admin/orders')->with('error', $e->getMessage());
         }
     }
     public function convert_orders_data_to_html()

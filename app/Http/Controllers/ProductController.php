@@ -121,7 +121,7 @@ class ProductController extends Controller
             $product->product_image = $fileNameToStore;
         }
         $product->update();
-        return redirect('/products')->with('status', 'The ' . $request->input('product_name') . ' Product has been Updated Successfuly');
+        return redirect('/admin/products')->with('status', 'The ' . $request->input('product_name') . ' Product has been Updated Successfuly');
     }
 
     public function delete_product($id)
@@ -134,7 +134,7 @@ class ProductController extends Controller
             Storage::delete('/public/product_images/' . $product->product_image);
         }
         $product->delete();
-        return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product has been Deleted Successfuly');
+        return redirect('/admin/products')->with('status', 'The ' . $product->product_name . ' Product has been Deleted Successfuly');
     }
 
     public function activate_product($id)
@@ -145,7 +145,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->status = 1;
         $product->update();
-        return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Activated Successfuly');
+        return redirect('/admin/products')->with('status', 'The ' . $product->product_name . ' Product status has been Activated Successfuly');
     }
 
     public function unactivate_product($id)
@@ -156,7 +156,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->status = 0;
         $product->update();
-        return redirect('/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
+        return redirect('/admin/products')->with('status', 'The ' . $product->product_name . ' Product status has been Unactivated Successfuly');
     }
     public function addToCart($id)
     {

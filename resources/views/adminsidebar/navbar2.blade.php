@@ -15,10 +15,10 @@
             </a>
             <div class="collapse" id="form-elements">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addcategory') }}">Add category</a>
+                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/addcategory') }}">Add category</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addproduct') }}">Add product</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/addslider') }}">Add slider</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/addproduct') }}">Add product</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ URL::to('admin/addslider') }}">Add slider</a></li>
                 </ul>
             </div>
         </li>
@@ -30,13 +30,13 @@
             </a>
             <div class="collapse" id="tables">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/categories') }}">Categories</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/products') }}">Products</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/sliders') }}">Sliders</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/orders') }}">Orders</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/new_orders') }}">New Orders</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{URL::to('/clients')}}">Clients</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{URL::to('/usersmessages')}}">UsersMessages</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/categories') }}">Categories</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/products') }}">Products</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/sliders') }}">Sliders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/orders') }}">Orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/new_orders') }}">New Orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/clients')}}">Clients</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/usersmessages')}}">UsersMessages</a></li>
                 </ul>
             </div>
         </li>

@@ -41,7 +41,7 @@
                                         <td>{{ $order->payment_id }}</td>
                                         <td>
                                             <button class="btn btn-outline-primary"
-                                                onclick="window.location = '{{ url('/view_pdf/' . $order->id) }}'">View</button>
+                                                onclick="window.location = '{{ url('/admin/view_pdf/' . $order->id) }}'">View</button>
                                         </td>
                                     </tr>
                                     {{ Form::hidden('', $increment = $increment + 1) }}
