@@ -31,17 +31,17 @@ class CategoryController extends Controller
 
 
         if (!$checkcat) {
-            
-                if ($request->hasFile('category_image')) {
-                    $fileNameWithExt = $request->file('category_image')->getClientOriginalName();
-                    $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-                    $extension = $request->file('category_image')->getClientOriginalExtension();
-                    $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-                    $path = $request->file('category_image')->storeAs('public/category_images', $fileNameToStore);
-                } else {
-                    $fileNameToStore = 'noimage.jpg';
-                }
-            
+
+            if ($request->hasFile('category_image')) {
+                $fileNameWithExt = $request->file('category_image')->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('category_image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+                $path = $request->file('category_image')->storeAs('public/category_images', $fileNameToStore);
+            } else {
+                $fileNameToStore = 'noimage.jpg';
+            }
+
             $category = new Category();
             $category->category_name = $request->input('category_name');
             $category->category_image = $fileNameToStore;
@@ -79,7 +79,7 @@ class CategoryController extends Controller
             'category_image' => 'image|nullable|max:1999'
         ]);
 
-        $category  = Category::find($request->input('id'));
+        $category  = Category::findOrFail($request->input('id'));
         $old_cat = $category->category_name;
         $oldimage = $category->category_image;
 
@@ -91,7 +91,7 @@ class CategoryController extends Controller
                 $extension = $request->file('category_image')->getClientOriginalExtension();
                 $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
                 $path = $request->file('category_image')->storeAs('public/category_images', $fileNameToStore);
-                // $oldimage = Product::find($request->input('id'));
+                // $oldimage = Product::findOrFail($request->input('id'));
                 if ($oldimage != 'noimage.jpg') {
                     Storage::delete('public/category_images/' . $oldimage);
                 }
@@ -112,7 +112,7 @@ class CategoryController extends Controller
         if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $category = Category::find($id);
+        $category = Category::findOrFail($id);
         if ($category->product_image != 'noimage.jpg') {
             Storage::delete('/public/category_images/' . $category->category_image);
         }
