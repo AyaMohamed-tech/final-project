@@ -18,7 +18,7 @@ class ProductController extends Controller
 
     function addproduct()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $categories = Category::All()->pluck('category_name', 'category_name');
@@ -27,7 +27,7 @@ class ProductController extends Controller
 
     public function saveproduct(Request $request)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
 
@@ -76,7 +76,7 @@ class ProductController extends Controller
 
     public function products()
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $products = product::get();
@@ -85,7 +85,7 @@ class ProductController extends Controller
 
     public function editproduct($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $categories = Category::All()->pluck('category_name', 'category_name');
@@ -95,7 +95,7 @@ class ProductController extends Controller
 
     public function updateproduct(Request $request)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $this->validate($request, [
@@ -104,7 +104,7 @@ class ProductController extends Controller
             'product_image' => 'image|nullable|max:1999',
         ]);
 
-        $product = Product::find($request->input('id'));
+        $product = Product::findOrFail($request->input('id'));
         $product->product_name = $request->input('product_name');
         $product->product_price = $request->input('product_price');
         $product->product_category = $request->input('product_category');
@@ -114,7 +114,7 @@ class ProductController extends Controller
             $extention = $request->file('product_image')->getClientOriginalExtension();
             $fileNameToStore = $fileName . '_' . time() . '.' . $extention;
             $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
-            $oldimage = Product::find($request->input('id'));
+            $oldimage = Product::findOrFail($request->input('id'));
             if ($oldimage->product_image != 'noimage.jpg') {
                 Storage::delete('public/product_images/' . $oldimage->product_image);
             }
@@ -126,10 +126,10 @@ class ProductController extends Controller
 
     public function delete_product($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         if ($product->product_image != 'noimage.jpg') {
             Storage::delete('/public/product_images/' . $product->product_image);
         }
@@ -139,7 +139,7 @@ class ProductController extends Controller
 
     public function activate_product($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $product = Product::findOrFail($id);
@@ -150,7 +150,7 @@ class ProductController extends Controller
 
     public function unactivate_product($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
         $product = Product::findOrFail($id);
@@ -160,9 +160,8 @@ class ProductController extends Controller
     }
     public function addToCart($id)
     {
-       
-        $product = Product::find($id);
-        /* dd($product); */
+
+        $product = Product::findOrFail($id);
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         $cart->add($product, $id);
