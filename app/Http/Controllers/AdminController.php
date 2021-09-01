@@ -97,11 +97,7 @@ class AdminController extends Controller
         if ($admin) {
             if (Hash::check($request->input('password'), $admin->password)) {
                 Session::put('admin', $admin);
-<<<<<<< HEAD
                 return redirect('/admin/admin');
-=======
-                return redirect('/new_orders');
->>>>>>> fdf5d0ae0a1b2fe9eabcbc10284ccf168bf0a15e
                 //return back()->with('status','Your Email Is ' .Session::get('client')->email);
 
             } else {
@@ -167,12 +163,8 @@ class AdminController extends Controller
 
         $contact->delete();
 
-<<<<<<< HEAD
        
        return redirect('/admin/usersmessages')->with('status','The Message has been deleted successfully');
 
-=======
-        return redirect('/usersmessages')->with('status', 'The Message has been deleted successfully');
->>>>>>> fdf5d0ae0a1b2fe9eabcbc10284ccf168bf0a15e
     }
 }
