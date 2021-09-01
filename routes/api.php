@@ -26,3 +26,21 @@ Route::put('/edit_category/{id}',[CategoryController::class,'edit']);
 Route::get('/view_by_cat/{name}',[CategoryController::class,'view_by_cat']);
 
 
+
+
+    //slider
+    Route::get('/sliders', 'SliderController@sliders');
+    Route::get('/addslider', 'SliderController@addslider');
+    Route::post('/saveslider', 'SliderController@saveslider');
+    Route::get('/edit_slider/{id}', 'SliderController@edit_slider');
+    Route::post('/updateslider', 'SliderController@updateslider');
+    Route::get('/delete_slider/{id}', 'SliderController@delete_slider');
+    Route::get('/unactivate_slider/{id}', 'SliderController@unactivate_slider');
+    Route::get('/activate_slider/{id}', 'SliderController@activate_slider');
+
+
+    Route::get('/aa', function(){
+        return "er ";
+    });
+
+

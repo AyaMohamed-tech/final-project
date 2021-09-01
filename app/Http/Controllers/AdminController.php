@@ -58,7 +58,7 @@ class AdminController extends Controller
         $order = Order::findOrFail($id);
         $order->status = 1;
         $order->update();
-        return redirect('/orders')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
+        return redirect('/admin/orders')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
     }
     //==========================================================
     public function login()

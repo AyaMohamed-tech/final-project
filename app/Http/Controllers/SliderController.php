@@ -47,7 +47,6 @@ class SliderController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
-<<<<<<< HEAD
                         
          $slider = new Slider();
 
@@ -59,8 +58,6 @@ class SliderController extends Controller
          $slider->save();
                         
          return redirect('/admin/addslider')->with('status','The Slider has been saved successfully');
-=======
->>>>>>> fdf5d0ae0a1b2fe9eabcbc10284ccf168bf0a15e
 
         $slider = new Slider();
 
@@ -132,13 +129,7 @@ class SliderController extends Controller
             $slider->slider_image = $fileNameToStore;
         }
 
-<<<<<<< HEAD
              return redirect('/admin/sliders')->with('status','The Slider has been updated successfully');
-=======
-        $slider->update();
-
-        return redirect('/sliders')->with('status', 'The Slider has been updated successfully');
->>>>>>> fdf5d0ae0a1b2fe9eabcbc10284ccf168bf0a15e
     }
 
     public function delete_slider($id)
