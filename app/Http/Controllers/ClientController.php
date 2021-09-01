@@ -25,7 +25,7 @@ class ClientController extends Controller
         //===== get all products in Product model =========
         $sliders = Slider::where('status', '1')->get();
         //===== get all sliders in Slider model =========
-        $products = Product::where('status', '1')->get();
+        $products = Product::where('status', '1')->paginate(8);
         $categories = Category::get();
         return view('client.home')->with(['sliders' => $sliders, 'products' => $products, 'categories' => $categories]);
     }
@@ -44,7 +44,7 @@ class ClientController extends Controller
     {
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
-        $cart->updateQty($request->id, $request->quantity,$request->part_quantity);
+        $cart->updateQty($request->id, $request->quantity, $request->part_quantity);
         Session::put('cart', $cart);
         return redirect('/cart');
     }
@@ -112,7 +112,7 @@ class ClientController extends Controller
         }
 
         Session::forget('cart');
-        return redirect('/cart')->with('success', 'Purchase accomplished successfully !');
+        return redirect('/shop')->with('success', 'Purchase accomplished successfully !');
     }
 
 
@@ -160,9 +160,7 @@ class ClientController extends Controller
         if ($client) {
             if (Hash::check($request->input('password'), $client->password)) {
                 Session::put('client', $client);
-                return redirect('/shop');
-                //return back()->with('status','Your Email Is ' .Session::get('client')->email);
-
+                return redirect('/checkout');
             } else {
                 return back()->with('error', 'Wrong Password or Email !');
             }

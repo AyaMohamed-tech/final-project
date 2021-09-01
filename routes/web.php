@@ -53,7 +53,6 @@ Route::group(['prefix'=>'admin'], function(){
 
 
     Route::get('/admin', 'AdminController@dashboard');
-
     Route::get('/orders', 'AdminController@orders');
     Route::get('/new_orders', 'AdminController@new_orders');
     Route::get('/delivered/{id}', 'AdminController@delivered');
