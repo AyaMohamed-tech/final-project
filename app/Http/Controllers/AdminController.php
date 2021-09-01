@@ -55,7 +55,7 @@ class AdminController extends Controller
     }
     public function delivered($id)
     {
-        $order = Order::find($id);
+        $order = Order::findOrFail($id);
         $order->status = 1;
         $order->update();
         return redirect('/orders')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
@@ -97,7 +97,11 @@ class AdminController extends Controller
         if ($admin) {
             if (Hash::check($request->input('password'), $admin->password)) {
                 Session::put('admin', $admin);
+<<<<<<< HEAD
                 return redirect('/admin/admin');
+=======
+                return redirect('/new_orders');
+>>>>>>> fdf5d0ae0a1b2fe9eabcbc10284ccf168bf0a15e
                 //return back()->with('status','Your Email Is ' .Session::get('client')->email);
 
             } else {
@@ -115,18 +119,19 @@ class AdminController extends Controller
     }
 
     // ----------------clients action-----------------
-    public function clients(){
+    public function clients()
+    {
         $clients = Client::get();
 
-        return view('admin.clients')->with('clients',$clients);
+        return view('admin.clients')->with('clients', $clients);
     }
-   
+
     public function activate_client($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         $client->status = 1;
         $client->update();
         return redirect('/admin/clients')->with('status', 'The ' . $client->name . ' Client status has been Activated Successfuly');
@@ -134,10 +139,10 @@ class AdminController extends Controller
 
     public function unactivate_client($id)
     {
-        if(!Session::has('admin')){
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $client = Client::find($id);
+        $client = Client::findOrFail($id);
         $client->status = 0;
         $client->update();
         return redirect('/admin/clients')->with('status', 'The ' . $client->name . ' Client status has been Unactivated Successfuly');
@@ -145,23 +150,29 @@ class AdminController extends Controller
 
     //---------------usersMessages------------------------
 
-    public function usersmessages(){
+    public function usersmessages()
+    {
         $contacts = Contact::get();
 
-        return view('admin.usersmessages')->with('contacts',$contacts);
+        return view('admin.usersmessages')->with('contacts', $contacts);
     }
 
-    public function delete_message($id){
-        if(!Session::has('admin')){
+    public function delete_message($id)
+    {
+        if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
 
-        $contact = Contact::find($id);
+        $contact = Contact::findOrFail($id);
 
         $contact->delete();
 
+<<<<<<< HEAD
        
        return redirect('/admin/usersmessages')->with('status','The Message has been deleted successfully');
 
+=======
+        return redirect('/usersmessages')->with('status', 'The Message has been deleted successfully');
+>>>>>>> fdf5d0ae0a1b2fe9eabcbc10284ccf168bf0a15e
     }
 }
