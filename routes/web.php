@@ -48,15 +48,15 @@ Route::get('/returns', 'ClientController@returns'); //------------returns route-
 
 
 //admin group
-Route::group(['prefix'=>'admin'], function(){
+Route::group(['prefix' => 'admin'], function () {
     Route::get('/view_pdf/{id}', 'PdfController@viewpdf');
 
 
-    Route::get('/admin', 'AdminController@dashboard');
+    Route::get('/', 'AdminController@dashboard');
     Route::get('/orders', 'AdminController@orders');
     Route::get('/new_orders', 'AdminController@new_orders');
     Route::get('/delivered/{id}', 'AdminController@delivered');
-   /*  Route::get('/loginadmin', 'AdminController@login');
+    /*  Route::get('/loginadmin', 'AdminController@login');
     Route::get('/signupadmin', 'AdminController@signup');
     Route::post('/createaccountadmin', 'AdminController@createaccount');
     Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
@@ -64,10 +64,10 @@ Route::group(['prefix'=>'admin'], function(){
  */
 
     // ----------------- clients route-------------------------------
-    Route::get('/clients','AdminController@clients');
+    Route::get('/clients', 'AdminController@clients');
     Route::get('/activate_client/{id}', 'AdminController@activate_client');
     Route::get('/unactivate_client/{id}', 'AdminController@unactivate_client');
-    Route::get('/usersmessages','AdminController@usersmessages');
+    Route::get('/usersmessages', 'AdminController@usersmessages');
     Route::get('/delete_message/{id}', 'AdminController@delete_message');
 
     // categories
@@ -89,7 +89,7 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/delete_product/{id}', 'ProductController@delete_product');
     Route::get('/activate_product/{id}', 'ProductController@activate_product');
     Route::get('/unactivate_product/{id}', 'ProductController@unactivate_product');
-   
+
 
 
 
@@ -102,7 +102,6 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/delete_slider/{id}', 'SliderController@delete_slider');
     Route::get('/unactivate_slider/{id}', 'SliderController@unactivate_slider');
     Route::get('/activate_slider/{id}', 'SliderController@activate_slider');
-   
 });
 
 /* Route::get('/admin', 'AdminController@dashboard');
@@ -113,7 +112,7 @@ Route::get('/loginadmin', 'AdminController@login');
 Route::get('/signupadmin', 'AdminController@signup');
 Route::post('/createaccountadmin', 'AdminController@createaccount');
 Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
- Route::get('/logoutadmin', 'AdminController@logout'); 
+Route::get('/logoutadmin', 'AdminController@logout');
 // ----------------- clients route-------------------------------
 /* Route::get('/clients','AdminController@clients');
 Route::get('/activate_client/{id}', 'AdminController@activate_client');
@@ -128,7 +127,7 @@ Route::get('/categories', 'CategoryController@categories');
 Route::get('/edit_category/{id}', 'CategoryController@edit');
 Route::post('/updatecategory', 'CategoryController@updatecategory');
 Route::get('/delete/{id}', 'CategoryController@delete');*/
-Route::get('/view_by_cat/{name}', 'CategoryController@view_by_cat'); 
+Route::get('/view_by_cat/{name}', 'CategoryController@view_by_cat');
 
 
 /* Route::get('/addproduct', 'ProductController@addproduct');
