@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\ProductResource;
 use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Product;
@@ -65,7 +66,7 @@ class CategoryController extends Controller
     {
         $categories = Category::get();
         $products = Product::where('product_category', $name)->get();
-        return $products;
+        return ProductResource::collection($products);
     }
 
     public function edit(Request $request, Category $id)

@@ -20,8 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//category
 Route::get('/categories', [CategoryController::class, 'categories']);
-Route::delete('/delete/{id}', [CategoryController::class, 'delete']);
+Route::delete('/delete_category/{id}', [CategoryController::class, 'delete']);
 Route::post('/savecategory', [CategoryController::class, 'savecategory']);
 Route::put('/edit_category/{id}', [CategoryController::class, 'edit']);
 Route::get('/view_by_cat/{name}', [CategoryController::class, 'view_by_cat']);
