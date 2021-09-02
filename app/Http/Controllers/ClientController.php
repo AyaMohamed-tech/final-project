@@ -63,9 +63,7 @@ class ClientController extends Controller
 
     public function shop()
     {
-        //===== get all categories in Category model =========
         $categories = Category::get();
-        //===== get all products in Product model =========
         $products = Product::where('status', '1')->get();
         return view('client.shop')->with('products', $products)->with('categories', $categories);
     }
@@ -75,7 +73,6 @@ class ClientController extends Controller
         if (!Session::has('client')) {
             return redirect('/login');
         }
-
         if (!Session::has('cart')) {
             return redirect('/cart');
         }

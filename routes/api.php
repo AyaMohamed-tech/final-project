@@ -58,8 +58,8 @@ Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->4
 //***********************    start of clinet controller  *****************************
 Route::group(['namespace' => 'Api'], function () {
     Route::get('/', 'ClientController@home');
+    Route::get('/shop', 'ClientController@shop');
 });
-Route::get('/shop', 'ClientController@shop');
 Route::get('/cart', 'ClientController@cart');
 Route::get('/checkout', 'ClientController@checkout');
 Route::get('/login', 'ClientController@login');
