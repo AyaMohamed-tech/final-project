@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('/view_by_cat/{name}',[CategoryController::class,'view_by_cat']);
 
 
     //slider
-    Route::get('/sliders', 'SliderController@sliders');
+    Route::get('/sliders', [SliderController::class,'sliders']);
     Route::get('/addslider', 'SliderController@addslider');
     Route::post('/saveslider', 'SliderController@saveslider');
     Route::get('/edit_slider/{id}', 'SliderController@edit_slider');
