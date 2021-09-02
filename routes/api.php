@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,18 @@ Route::get('/view_by_cat/{name}',[CategoryController::class,'view_by_cat']);
     Route::get('/aa', function(){
         return "er ";
     });
+
+
+
+        //product
+        Route::get('/addproduct', 'ProductController@addproduct');
+        // Route::get('/products', 'ProductController@products');
+        Route::get('/products',[ProductController::class,'products']);
+        Route::post('/saveproduct', 'ProductController@saveproduct');
+        Route::get('/edit_product/{id}', 'ProductController@editproduct');
+        Route::post('/updateproduct', 'ProductController@updateproduct');
+        Route::get('/delete_product/{id}', 'ProductController@delete_product');
+        Route::get('/activate_product/{id}', 'ProductController@activate_product');
+        Route::get('/unactivate_product/{id}', 'ProductController@unactivate_product');
 
 
