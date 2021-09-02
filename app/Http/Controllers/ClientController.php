@@ -22,9 +22,7 @@ class ClientController extends Controller
 {
     public function home()
     {
-        //===== get all products in Product model =========
         $sliders = Slider::where('status', '1')->get();
-        //===== get all sliders in Slider model =========
         $products = Product::where('status', '1')->paginate(8);
         $categories = Category::get();
         return view('client.home')->with(['sliders' => $sliders, 'products' => $products, 'categories' => $categories]);
