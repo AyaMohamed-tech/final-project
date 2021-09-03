@@ -18,29 +18,29 @@ use Illuminate\Support\Facades\Route;
 }); */
 
 Route::get('/', 'ClientController@home');
-Route::get('/shop', 'ClientController@shop');
-Route::get('/cart', 'ClientController@cart');
-Route::get('/checkout', 'ClientController@checkout');
-Route::get('/login', 'ClientController@login');
-Route::get('/signup', 'ClientController@signup');
-Route::post('/updateqty', 'ClientController@updateqty');
-Route::get('/removeitem/{id}', 'ClientController@removeitem');
-Route::post('postcheckout', 'ClientController@postcheckout');
+Route::get('/shop', 'ClientController@shop')->name('shop');
+Route::get('/cart', 'ClientController@cart')->name('cart');
+Route::get('/checkout', 'ClientController@checkout')->name('checkout');
+Route::get('/login', 'ClientController@login')->name('login');
+Route::get('/signup', 'ClientController@signup')->name('signup');
+Route::post('/updateqty', 'ClientController@updateqty')->name('updateqty');
+Route::get('/removeitem/{id}', 'ClientController@removeitem')->name('removeitem');
+Route::post('postcheckout', 'ClientController@postcheckout')->name('postcheckout');
 
 
 Route::post('/createaccount', 'ClientController@createaccount');
 Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
-Route::get('/contactus', 'ClientController@contactus');
+Route::get('/contactus', 'ClientController@contactus')->name('contactus');
 Route::post('/datacontact', 'ClientController@datacontact');
-Route::get('/profile', 'ClientController@profile');
+Route::get('/profile', 'ClientController@profile')->name('profile');
 
 
-Route::get('/about', 'ClientController@about'); //------------about route--------------------------
-Route::get('/privacypolicy', 'ClientController@privacypolicy'); //------------privacypolicy route-------------
-Route::get('/terms', 'ClientController@terms'); //------------terms route-------------
-Route::get('/shipping', 'ClientController@shipping'); //------------shipping route-------------
-Route::get('/returns', 'ClientController@returns'); //------------returns route-------------
+Route::get('/about', 'ClientController@about')->name('about'); //------------about route--------------------------
+Route::get('/privacypolicy', 'ClientController@privacypolicy')->name('privacypolicy'); //------------privacypolicy route-------------
+Route::get('/terms', 'ClientController@terms')->name('terms'); //------------terms route-------------
+Route::get('/shipping', 'ClientController@shipping')->name('shipping'); //------------shipping route-------------
+Route::get('/returns', 'ClientController@returns')->name('returns'); //------------returns route-------------
 
 
 
@@ -131,22 +131,8 @@ Route::get('/delete/{id}', 'CategoryController@delete');*/
 Route::get('/view_by_cat/{name}', 'CategoryController@view_by_cat'); 
 
 
-/* Route::get('/addproduct', 'ProductController@addproduct');
-Route::get('/products', 'ProductController@products');
-Route::post('/saveproduct', 'ProductController@saveproduct');
-Route::get('/edit_product/{id}', 'ProductController@editproduct');
-Route::post('/updateproduct', 'ProductController@updateproduct');
-Route::get('/delete_product/{id}', 'ProductController@delete_product');
-Route::get('/activate_product/{id}', 'ProductController@activate_product');
-Route::get('/unactivate_product/{id}', 'ProductController@unactivate_product'); */
+/* product*/
+
 Route::get('/addToCart/{id}', 'ProductController@addToCart');
 
 
-/* Route::get('/sliders', 'SliderController@sliders'); */
-/* Route::get('/addslider', 'SliderController@addslider'); */
-/* Route::post('/saveslider', 'SliderController@saveslider'); */
-/* Route::get('/edit_slider/{id}', 'SliderController@edit_slider'); */
-/* Route::post('/updateslider', 'SliderController@updateslider'); */
-/* Route::get('/delete_slider/{id}', 'SliderController@delete_slider'); */
-/* Route::get('/unactivate_slider/{id}', 'SliderController@unactivate_slider');
-Route::get('/activate_slider/{id}', 'SliderController@activate_slider'); */

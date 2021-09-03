@@ -8,10 +8,10 @@
 		<div class="collapse navbar-collapse" id="ftco-nav">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item active"><a href="{{URL::to('/')}}" class="nav-link">Home</a></li>
-				<li class="nav-item active"><a href="{{URL::to('/shop')}}" class="nav-link">shop</a></li>
-				<li class="nav-item active"><a href="{{URL::to('/profile')}}" class="nav-link">profile</a></li>
+				<li class="nav-item active"><a href="{{route('shop')}} " class="nav-link">shop</a></li>
+				<li class="nav-item active"><a href="{{route('profile')}} " class="nav-link">profile</a></li>
 
-				<li class="nav-item cta cta-colored"><a href="{{URL::to('/cart')}}" class="nav-link"><span class="icon-shopping_cart"></span>[{{Session::has('cart')? Session::get('cart')->integer_quantity:0 }}]</a></li>
+				<li class="nav-item cta cta-colored"><a href="{{route('cart')}} " class="nav-link"><span class="icon-shopping_cart"></span>[{{Session::has('cart')? Session::get('cart')->integer_quantity:0 }}]</a></li>
 				@if(Session::has('client'))
 
 				<li class="nav-item active"><a href="{{URL::to('/logout')}}" class="nav-link"><span class="fa fa-user"></span>Logout</a></li>
