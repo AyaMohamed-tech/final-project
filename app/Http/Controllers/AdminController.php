@@ -166,4 +166,13 @@ class AdminController extends Controller
 
         return redirect('/admin/usersmessages')->with('status', 'The Message has been deleted successfully');
     }
+
+
+    public function search()
+    {
+        $data= product::
+        where('name' ,'like' , '%'.$req->input('quey'). '%')->get();
+        return view('search' , ['products'=>$data]);
+    }
+
 }

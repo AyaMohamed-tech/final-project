@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-
-<div class="container">
+ 
+<div class="container mt-5  " >
 
 <div class="card " >
   <h5 class="card-header">PERSONAL DATA :</h5>

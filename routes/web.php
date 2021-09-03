@@ -66,6 +66,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/unactivate_client/{id}', 'AdminController@unactivate_client');
     Route::get('/usersmessages', 'AdminController@usersmessages');
     Route::get('/delete_message/{id}', 'AdminController@delete_message');
+    Route::get('/search', 'AdminController@search');
 
     // categories
     Route::get('/addcategory', 'CategoryController@addcategory');

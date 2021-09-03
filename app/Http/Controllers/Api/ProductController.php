@@ -47,51 +47,70 @@ class ProductController extends Controller
         return new ProductResource($product);
     }
 
-    // public function saveproduct(Request $request)
+    public function saveproduct(Request $request)
+    {
+
+        $this->validate($request, [
+            'product_name' => 'required',
+            'product_price' => 'required',
+            'product_image' => 'image|nullable|max:1999'
+        ]);
+
+
+        if ($request->input('product_category')) {
+
+            if ($request->hasFile('product_image')) {
+                // 1 : get filename with Ext
+                $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
+
+                // 2 : get just file name
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+                // 3 : get just extension
+                $extension = $request->file('product_image')->getClientOriginalExtension();
+
+                // 4 : file name to store
+                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+
+                // 5 : upload image
+                $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+            } else {
+                $fileNameToStore = 'noimage.jpg';
+            }
+
+            $product = new Product();
+            $product->product_name = $request->input('product_name');
+            $product->product_price = $request->input('product_price');
+            $product->product_category = $request->input('product_category');
+            $product->product_image = $fileNameToStore;
+            $product->status = 1;
+
+            $product->save();
+            return new ProductResource($product);
+        } else {
+            // return redirect('/addproduct')->with('status1', 'Do select the category please');
+            return  'select category please';
+
+        }
+    }
+
+    // public function editproduct(Request $request, Product $id)
     // {
 
-    //     $this->validate($request, [
-    //         'product_name' => 'required',
-    //         'product_price' => 'required',
-    //         'product_image' => 'image|nullable|max:1999'
-    //     ]);
+    //     $id->update($request->all());
 
+    //     return response()->json($id, 200);
+    // }
 
-    //     if ($request->input('product_category')) {
+    // public function addToCart($id)
+    // {
 
-    //         if ($request->hasFile('product_image')) {
-    //             // 1 : get filename with Ext
-    //             $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
-
-    //             // 2 : get just file name
-    //             $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-
-    //             // 3 : get just extension
-    //             $extension = $request->file('product_image')->getClientOriginalExtension();
-
-    //             // 4 : file name to store
-    //             $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
-
-    //             // 5 : upload image
-    //             $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
-    //         } else {
-    //             $fileNameToStore = 'noimage.jpg';
-    //         }
-
-    //         $product = new Product();
-    //         $product->product_name = $request->input('product_name');
-    //         $product->product_price = $request->input('product_price');
-    //         $product->product_category = $request->input('product_category');
-    //         $product->product_image = $fileNameToStore;
-    //         $product->status = 1;
-
-    //         $product->save();
-    //         return new ProductResource($product);
-    //     } else {
-    //         // return redirect('/addproduct')->with('status1', 'Do select the category please');
-    //         return  'select category please';
-
-    //     }
+    //     $product = Product::findOrFail($id);
+    //     $oldCart = Session::has('cart') ? Session::get('cart') : null;
+    //     $cart = new Cart($oldCart);
+    //     $cart->add($product, $id);
+    //     Session::put('cart', $cart);
+    //     return redirect('/shop');
     // }
 
     
