@@ -47,17 +47,6 @@ class SliderController extends Controller
         } else {
             $fileNameToStore = 'noimage.jpg';
         }
-                        
-         $slider = new Slider();
-
-         $slider->description1 = $request->input('description_one');
-         $slider->description2 = $request->input('description_two');
-         $slider->slider_image = $fileNameToStore;
-         $slider->status = 1;
-                        
-         $slider->save();
-                        
-         return redirect('/admin/addslider')->with('status','The Slider has been saved successfully');
 
         $slider = new Slider();
 
@@ -68,7 +57,9 @@ class SliderController extends Controller
 
         $slider->save();
 
-        return redirect('/addslider')->with('status', 'The Slider has been saved successfully');
+        return redirect('/admin/addslider')->with('status', 'The Slider has been saved successfully');
+
+
     }
     public function sliders()
     {
@@ -128,8 +119,8 @@ class SliderController extends Controller
 
             $slider->slider_image = $fileNameToStore;
         }
-
-             return redirect('/admin/sliders')->with('status','The Slider has been updated successfully');
+        $slider->update();
+        return redirect('/admin/sliders')->with('status', 'The Slider has been updated successfully');
     }
 
     public function delete_slider($id)
@@ -146,10 +137,14 @@ class SliderController extends Controller
 
         $slider->delete();
 
+<<<<<<< HEAD
        
+=======
+    
+>>>>>>> 5652a708ff0ea15aea358e008549fa8c47c35564
        return redirect('/admin/sliders')->with('status','The Slider has been deleted successfully');
 
-        return redirect('/sliders')->with('status', 'The Slider has been deleted successfully');
+       
     }
 
     public function unactivate_slider($id)
@@ -166,6 +161,11 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect('/admin/sliders')->with('status','The Slider status has been unactivated successfully');
+<<<<<<< HEAD
+=======
+       
+        
+>>>>>>> 5652a708ff0ea15aea358e008549fa8c47c35564
     }
     public function activate_slider($id)
     {
@@ -181,5 +181,10 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect('/admin/sliders')->with('status','The Slider status has been activated successfully');
+<<<<<<< HEAD
+=======
+      
+       
+>>>>>>> 5652a708ff0ea15aea358e008549fa8c47c35564
     }
 }
