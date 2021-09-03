@@ -47,14 +47,14 @@ Route::get('/aa', function () {
 
 
 
-//product
+//product controller
 Route::get('/products', [ProductController::class, 'products']);
-Route::put('/saveproduct/{id}', [ProductController::class, 'saveproduct']); //=>2
-Route::put('/edit_product/{id}', [ProductController::class, 'editproduct']); //->3
+Route::put('/saveproduct/{id}', [ProductController::class, 'saveproduct']); 
+Route::put('/edit_product/{id}', [ProductController::class, 'editproduct']); //->1
 Route::delete('/delete_product/{id}', [ProductController::class, 'delete_product']);
 Route::get('/activate_product/{id}', [ProductController::class, 'activate_product']);
 Route::get('/unactivate_product/{id}', [ProductController::class, 'unactivate_product']);
-Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->4
+Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->2
 
 //***********************    start of clinet controller  *****************************
 Route::group(['namespace' => 'Api'], function () {
