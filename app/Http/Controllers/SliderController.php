@@ -137,11 +137,7 @@ class SliderController extends Controller
 
         $slider->delete();
 
-<<<<<<< HEAD
        
-=======
-    
->>>>>>> 5652a708ff0ea15aea358e008549fa8c47c35564
        return redirect('/admin/sliders')->with('status','The Slider has been deleted successfully');
 
        
@@ -161,11 +157,6 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect('/admin/sliders')->with('status','The Slider status has been unactivated successfully');
-<<<<<<< HEAD
-=======
-       
-        
->>>>>>> 5652a708ff0ea15aea358e008549fa8c47c35564
     }
     public function activate_slider($id)
     {
@@ -181,10 +172,5 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect('/admin/sliders')->with('status','The Slider status has been activated successfully');
-<<<<<<< HEAD
-=======
-      
-       
->>>>>>> 5652a708ff0ea15aea358e008549fa8c47c35564
     }
 }
