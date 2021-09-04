@@ -49,7 +49,7 @@ Route::get('/aa', function () {
 
 //product controller
 Route::get('/products', [ProductController::class, 'products']);
-Route::put('/saveproduct/{id}', [ProductController::class, 'saveproduct']); 
+Route::put('/saveproduct', [ProductController::class, 'saveproduct']); 
 Route::put('/edit_product/{id}', [ProductController::class, 'editproduct']); //->1
 Route::delete('/delete_product/{id}', [ProductController::class, 'delete_product']);
 Route::get('/activate_product/{id}', [ProductController::class, 'activate_product']);
