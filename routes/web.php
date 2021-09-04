@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ClientController@home');
 Route::get('/shop', 'ClientController@shop')->name('shop');
 Route::get('/cart', 'ClientController@cart')->name('cart');
-Route::get('/checkout', 'ClientController@checkout')->name('checkout');
+Route::get('/checkout', 'ClientController@checkout')->name('checkout')->middleware('auth');
 Route::get('/login', 'ClientController@login')->name('login');
 Route::get('/signup', 'ClientController@signup')->name('signup');
 Route::post('/updateqty', 'ClientController@updateqty')->name('updateqty');
@@ -33,7 +33,7 @@ Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
 Route::get('/contactus', 'ClientController@contactus')->name('contactus');
 Route::post('/datacontact', 'ClientController@datacontact');
-Route::get('/profile', 'ClientController@profile')->name('profile');
+Route::get('/profile', 'ClientController@profile')->name('profile')->middleware('auth');
 
 
 Route::get('/about', 'ClientController@about')->name('about'); //------------about route--------------------------
@@ -124,3 +124,7 @@ Route::get('/view_by_cat/{name}', 'CategoryController@view_by_cat');
 Route::get('/addToCart/{id}', 'ProductController@addToCart');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

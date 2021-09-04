@@ -23,13 +23,7 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
         return  new SliderResource($slider);
     }
-    public function edit_slider($id)
-    {
-
-       $slider = Slider::findOrFail($id);
-       $slider->update;
-        return view('admin.editslider')->with('slider', $slider);
-    }
+ 
     public function delete_slider($id)
     {
      
@@ -84,7 +78,7 @@ class SliderController extends Controller
     }
 
 
-    public function edit_slider(Request $request)
+    public function edit_slider(Request $request , $id)
     {
 
         $this->validate($request, [
@@ -93,7 +87,7 @@ class SliderController extends Controller
             'slider_image' => 'image|nullable|max:1999'
         ]);
 
-        $slider = Slider::findOrFail($request->input('id'));
+        $slider = Slider::findOrFail($id);
 
         $slider->description1 = $request->input('description_one');
         $slider->description2 = $request->input('description_two');

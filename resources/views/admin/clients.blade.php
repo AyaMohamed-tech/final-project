@@ -1,7 +1,7 @@
 @extends('layouts.appadmin')
 
 @section('title')
-  Clients
+  users
 @endsection
 @section('content')
 
@@ -9,7 +9,7 @@
 
 <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Clients</h4>
+              <h4 class="card-title">users</h4>
                   @if(Session::has('status'))
                       <div class="alert alert-success">
                             {{Session::get('status')}}
@@ -22,19 +22,19 @@
                       <thead>
                         <tr>
                             <th>Order #</th>
-                            <th>Client Name</th>
+                            <th>user Name</th>
                             <th>Email</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach($clients as $client)
+                        @foreach($users as $user)
                         <tr>
                             <td>{{$increment}}</td>
-                            <td>{{$client->name}}</td>
-                            <td>{{$client->email}}</td>
-                            @if ($client->status == 1)
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            @if ($user->status == 1)
                             <td>
                               <label class="badge badge-success">Activated</label>
                             </td>
@@ -47,11 +47,11 @@
 
                            @endif
                            <td>
-                           @if ($client->status == 1)
-                                                <a href="/admin/unactivate_client/{{ $client->id }}"
+                           @if ($user->status == 1)
+                                                <a href="/admin/unactivate_user/{{ $user->id }}"
                                                     class="btn btn-outline-warning">Unactivate</a>
                                             @else
-                                                <a href="/admin/activate_client/{{ $client->id }}"
+                                                <a href="/admin/activate_user/{{ $user->id }}"
                                                     class="btn btn-outline-success">activate</a>
                                             @endif
                            </td>

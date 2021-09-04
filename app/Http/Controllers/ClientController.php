@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
+use DB;
+use App\Cart;
 
-use Illuminate\Http\Request;
+use App\User;
+use App\Order;
+use App\Client;
 use App\Slider;
+use App\Contact;
 use App\Product;
 use App\Category;
-use App\Cart;
-use App\Client;
 use Stripe\Charge;
 use Stripe\Stripe;
-use App\Order;
-use App\Contact;
-use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ClientController extends Controller
@@ -70,9 +71,9 @@ class ClientController extends Controller
 
     public function checkout()
     {
-        if (!Session::has('client')) {
+        /* if (!Session::has('client')) {
             return redirect('/login');
-        }
+        } */
         if (!Session::has('cart')) {
             return redirect('/cart');
         }
@@ -232,19 +233,19 @@ class ClientController extends Controller
 
     public function profile()
     {
-        if (!Session::has('client')) {
+      /*   if (!Session::has('client')) {
             return redirect('/login');
-        }
+        } */
 
-        $clients = Client::get();
-
+        $users = User::get();
+       
         // dd(Session::get('client')->name);
-        $orders = Order::where('name', Session::get('client')->name)->get();
-        // dd($orders);
+        $orders = Order::where('name', auth()->user()->name )->get();
+        //dd($orders);
         $orders->transform(function ($order, $key) {
             $order->cart = unserialize($order->cart);
             return $order;
         });
-        return view('client.profile')->with(['clients' => $clients, 'orders' => $orders]);
+        return view('client.profile')->with(['users' => $users, 'orders' => $orders]);
     }
 }

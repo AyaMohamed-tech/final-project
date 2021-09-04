@@ -6,6 +6,10 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SliderController;
 
+use App\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -38,7 +42,6 @@ Route::delete('/delete_slider/{id}', [SliderController::class, 'delete_slider'])
 Route::post('/saveslider', [SliderController::class, 'saveslider']);
 
 Route::post('/edit_slider/{id}', [SliderController::class, 'edit_slider']);
-Route::post('/updateslider', 'SliderController@updateslider');
 
 
 Route::get('/aa', function () {
@@ -78,10 +81,29 @@ Route::post('/datacontact', 'ClientController@datacontact');
 Route::get('/profile', 'ClientController@profile');
 
 
-Route::get('/about', 'ClientController@about'); //------------about route--------------------------
-Route::get('/privacypolicy', 'ClientController@privacypolicy'); //------------privacypolicy route-------------
-Route::get('/terms', 'ClientController@terms'); //------------terms route-------------
-Route::get('/shipping', 'ClientController@shipping'); //------------shipping route-------------
-Route::get('/returns', 'ClientController@returns'); //------------returns route-------------
+/* Route::get('/about', 'ClientController@about'); 
+Route::get('/privacypolicy', 'ClientController@privacypolicy');
+Route::get('/terms', 'ClientController@terms'); 
+Route::get('/shipping', 'ClientController@shipping'); 
+Route::get('/returns', 'ClientController@returns'); */
+
+
+Route::post('/sanctum/token', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+        'device_name' => 'required',
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (! $user || ! Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
+        ]);
+    }
+
+    return $user->createToken($request->device_name)->plainTextToken;
+});
 
 //***********************    end of clinet controller    ******************************
