@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\Client;
 use App\Contact;
+use App\User;
 
 use PhpParser\Node\Expr\AssignOp\Concat;
 
@@ -117,9 +118,9 @@ class AdminController extends Controller
     // ----------------clients action-----------------
     public function clients()
     {
-        $clients = Client::get();
+        $users = User::get();
 
-        return view('admin.clients')->with('clients', $clients);
+        return view('admin.clients')->with('users', $users);
     }
 
     public function activate_client($id)
@@ -127,10 +128,10 @@ class AdminController extends Controller
         if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $client = Client::findOrFail($id);
-        $client->status = 1;
-        $client->update();
-        return redirect('/admin/clients')->with('status', 'The ' . $client->name . ' Client status has been Activated Successfuly');
+        $user = User::findOrFail($id);
+        $user->status = 1;
+        $user->update();
+        return redirect('/admin/clients')->with('status', 'The ' . $user->name . ' Client status has been Activated Successfuly');
     }
 
     public function unactivate_client($id)
@@ -138,10 +139,10 @@ class AdminController extends Controller
         if (!Session::has('admin')) {
             return redirect('/loginadmin');
         }
-        $client = Client::findOrFail($id);
-        $client->status = 0;
-        $client->update();
-        return redirect('/admin/clients')->with('status', 'The ' . $client->name . ' Client status has been Unactivated Successfuly');
+        $user = User::findOrFail($id);
+        $user->status = 0;
+        $user->update();
+        return redirect('/admin/clients')->with('status', 'The ' . $user->name . ' Client status has been Unactivated Successfuly');
     }
 
     //---------------usersMessages------------------------

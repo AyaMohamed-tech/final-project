@@ -15,10 +15,11 @@ class SliderResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'Description One' => $this->description1,
-            'Description Two' => $this->description2,
-            'status' => $this->status,
+        "id" => $this->id,
+        "description_one"=> $this->description1,
+        "description_two"=> $this->description2,
+        "slider_image"=> $this->slider_image,
+        
         ];
     }
 }

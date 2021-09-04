@@ -137,7 +137,7 @@ class SliderController extends Controller
 
         $slider->delete();
 
-    
+       
        return redirect('/admin/sliders')->with('status','The Slider has been deleted successfully');
 
        
@@ -157,8 +157,6 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect('/admin/sliders')->with('status','The Slider status has been unactivated successfully');
-       
-        
     }
     public function activate_slider($id)
     {
@@ -174,7 +172,5 @@ class SliderController extends Controller
         $slider->update();
 
         return redirect('/admin/sliders')->with('status','The Slider status has been activated successfully');
-      
-       
     }
 }

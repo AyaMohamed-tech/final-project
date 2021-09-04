@@ -13,38 +13,14 @@
   <div class="card-body">
     <!-- <h5 class="card-title">PERSONAL DATA</h5> -->
   
-    <p class="card-text">   full name : {{ Session::get('client')->name }} <br> email adress :
-                                {{ Session::get('client')->email }}</p>     </p>
+    <p class="card-text">   full name :{{ auth()->user()->name }} <br> email adress :{{ auth()->user()->email }}
+                              </p>     </p>
     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
   </div>
 </div>
 </div>
 
 
-<!-- 
-
-
-
-    <div class="person">
-        <div class="container">
-            <div class="card mb-3 px-0">
-                <div class="row g-0 ">
-                    <div class="col-md-6">
-                        <img src="frontend/images/welcome.jpg" class="img-fluid d-block" alt="... ">
-                    </div>
-                    <div class="col-md-6 ">
-                        <div class="card-body ">
-                            <br><br><br>
-                            <p class="h2 ">MY PERSONAL DATA :</p><br>
-                            <p class=" ">full name : {{ Session::get('client')->name }} <br> email adress :
-                                {{ Session::get('client')->email }}</p>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 
 
     <!-- <div class="container">

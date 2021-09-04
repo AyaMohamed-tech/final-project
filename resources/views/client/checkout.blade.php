@@ -35,7 +35,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="firstname">Full Name</label>
-                                <input type="text" class="form-control" value="{{ Session::get('client')->name }} "
+                                <input type="text" class="form-control" value="{{ auth()->user()->name }} "
                                     name="name">
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="lastname">Address</label>
-                                <input type="text" class="form-control" name="address" value="{{ Session::get('client')->address }} ">
+                                <input type="text" class="form-control" name="address">
                             </div>
                         </div>
 

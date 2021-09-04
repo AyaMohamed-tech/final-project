@@ -29,7 +29,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-10 mb-5 text-center">
                     <ul class="product-category">
-                        <li><a href="{{ URL::to('/shop') }}" class="{{ request()->is('shop') ? 'active' : '' }}">All</a>
+                        <li><a href="{{route('shop')}} " class="{{ request()->is('shop') ? 'active' : '' }}">All</a>
                         </li>
                         @foreach ($categories as $category)
                             <li>

@@ -69,11 +69,42 @@ class CategoryController extends Controller
         return ProductResource::collection($products);
     }
 
-    public function edit(Request $request, Category $id)
+
+    public function edit(Request $request, $id)
     {
+        
+        $this->validate($request, [
+            'category_name' => 'required',
+            'category_image' => 'image|nullable|max:1999'
+        ]);
 
-        $id->update($request->all());
+        $category  = Category::findOrFail($id);
+        $old_cat = $category->category_name;
+        $oldimage = $category->category_image;
 
-        return response()->json($id, 200);
+        $category->category_name = $request->input('category_name');
+        if ($request->hasFile('category_image')) {
+            if ($request->hasFile('category_image')) {
+                $fileNameWithExt = $request->file('category_image')->getClientOriginalName();
+                $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+                $extension = $request->file('category_image')->getClientOriginalExtension();
+                $fileNameToStore = $fileName . '_' . time() . '.' . $extension;
+                $path = $request->file('category_image')->storeAs('public/category_images', $fileNameToStore);
+                // $oldimage = Product::findOrFail($request->input('id'));
+                if ($oldimage != 'noimage.jpg') {
+                    Storage::delete('public/category_images/' . $oldimage);
+                }
+                $category->category_image = $fileNameToStore;
+            }
+        }
+        $data = array();
+        $data['product_category'] = $request->input('category_name');
+
+        DB::table('products')
+            ->where('product_category', $old_cat)
+            ->update($data);
+        $category->update();
+        return new CategoryResource($category);
+
     }
 }
