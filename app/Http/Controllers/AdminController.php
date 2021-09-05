@@ -12,6 +12,7 @@ use App\Order;
 use App\Client;
 use App\Contact;
 use App\User;
+use App\Product;
 
 use PhpParser\Node\Expr\AssignOp\Concat;
 

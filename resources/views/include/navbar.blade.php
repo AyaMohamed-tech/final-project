@@ -16,6 +16,7 @@
 				@guest
 				@if (Route::has('login'))
 				<li class="nav-item active"><a href="{{URL::to('/login')}}" class="nav-link"><span class="fa fa-user">Login</span></a></li>
+				<li class="nav-item active"><a href="{{URL::to('/register')}}" class="nav-link"><span class="fa fa-user">	Register</span></a></li>
 				@endif
 
 				@else

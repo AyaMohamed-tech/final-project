@@ -13805,3 +13805,55 @@ textarea.form-control {
       font-style: italic;
       font-size: 18px;
     }
+    footer.ftco-footer.ftco-section{
+        background-color: #f3f9ec;
+    }
+/************* final modfication ***************/
+.content-auth .card-header {
+    background: linear-gradient(45deg, #4a750f, #82ae46);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.content-auth{
+    margin:30px 0
+}
+.content-auth .card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    color: #fff;
+}
+body{
+    overflow-x: hidden;
+}
+.ftco-footer {
+    font-size: 14px;
+    padding: 5em 0px 3em;
+    color: #000000;
+}
+p.copywriter {
+    padding: 11px;
+    margin-bottom: 0;
+    text-align: center;
+    background-color: #82ae46;
+    color: #fff;
+}
+.content-auth label {
+    color: #000;
+}
+.content-auth .form-control:focus, .content-auth .form-control:active {
+    border-color: #82ae46;
+}
+.content-auth .content-auth {
+    border-color: #82ae46;
+}
+.content-auth .card {
+    border-color: #82ae46;
+}
+.btn-link:hover , .btn-link{
+    color: #82ae46;
+    text-decoration: underline;
+}
+
+@media (max-width: 767) {
+    .content-auth{
+        margin: 20px 0;
+    }
+}

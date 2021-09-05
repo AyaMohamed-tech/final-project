@@ -14,6 +14,8 @@ use App\Slider;
 use Illuminate\Http\Request;
 use Stripe\Charge;
 use Stripe\Stripe;
+use Illuminate\Support\Facades\Session;
+
 
 class ClientController extends Controller
 {
@@ -37,4 +39,13 @@ class ClientController extends Controller
             'categories' => CategoryResource::collection($categories),
         ];
     }
+    public function cart()
+    {
+       
+
+        $oldCart = Session::has('cart') ? Session::get('cart') : null;
+        $cart = new Cart($oldCart);
+        return $oldCart;
+    }
+
 }

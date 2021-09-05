@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SliderController;
+use App\Http\Controllers\Api\ClientController;
 
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -44,11 +45,6 @@ Route::post('/saveslider', [SliderController::class, 'saveslider']);
 Route::post('/edit_slider/{id}', [SliderController::class, 'edit_slider']);
 
 
-Route::get('/aa', function () {
-    return "er ";
-});
-
-
 
 //product controller
 Route::get('/products', [ProductController::class, 'products']);
@@ -61,10 +57,15 @@ Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->2
 
 //***********************    start of clinet controller  *****************************
 Route::group(['namespace' => 'Api'], function () {
-    Route::get('/', 'ClientController@home');
-    Route::get('/shop', 'ClientController@shop');
+    
+});//->middleware('auth:sanctum')
+Route::group(['middleware' => 'auth:sanctum'], static function () {
+    Route::get('/cart', [ClientController::class,'cart']);
+    Route::get('/shop', [ClientController::class, 'shop']);
+    Route::get('/',[ClientController::class, 'home']);
+
 });
-Route::get('/cart', 'ClientController@cart');
+/* ->middleware('auth:sanctum') */;
 Route::get('/checkout', 'ClientController@checkout');
 Route::get('/login', 'ClientController@login');
 Route::get('/signup', 'ClientController@signup');
