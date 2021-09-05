@@ -11,9 +11,15 @@ use App\Http\Resources\ProductResource;
 use App\Http\Resources\SliderResource;
 use App\Product;
 use App\Slider;
+use App\Order;
+use App\User;
+
+
 use Illuminate\Http\Request;
 use Stripe\Charge;
 use Stripe\Stripe;
+
+
 use Illuminate\Support\Facades\Session;
 
 
@@ -46,6 +52,28 @@ class ClientController extends Controller
         $oldCart = Session::has('cart') ? Session::get('cart') : null;
         $cart = new Cart($oldCart);
         return $oldCart;
+    }
+
+
+    public function returns()
+    {
+        return view('client.returns');
+    }
+
+    public function profile()
+    {
+    
+        $users = User::get();
+       
+        // dd(Session::get('client')->name);
+        $orders = Order::where('name', auth()->user()->name )->get();
+        //dd($orders);
+        $orders->transform(function ($order, $key) {
+            $order->cart = unserialize($order->cart);
+            return $order;
+        });
+        return $orders;
+       
     }
 
 }

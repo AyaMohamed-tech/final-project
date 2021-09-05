@@ -85,9 +85,7 @@ class ProductController extends Controller
 
     public function editproduct($id)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+   
         $categories = Category::All()->pluck('category_name', 'category_name');
         $product = product::findOrFail($id);
         return view('admin.editproduct')->with('product', $product)->with('categories', $categories);

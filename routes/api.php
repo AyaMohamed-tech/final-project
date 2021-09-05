@@ -48,11 +48,7 @@ Route::post('/edit_slider/{id}', [SliderController::class, 'edit_slider']);
 
 //product controller
 Route::get('/products', [ProductController::class, 'products']);
-<<<<<<< HEAD
-Route::put('/saveproduct', [ProductController::class, 'saveproduct']); 
-=======
 Route::put('/saveproduct/{id}', [ProductController::class, 'saveproduct']);
->>>>>>> 392eb8cb9c47ac8fb2557bc60e000a9ac5d91cd0
 Route::put('/edit_product/{id}', [ProductController::class, 'editproduct']); //->1
 Route::delete('/delete_product/{id}', [ProductController::class, 'delete_product']);
 Route::get('/activate_product/{id}', [ProductController::class, 'activate_product']);
@@ -66,10 +62,14 @@ Route::group(['namespace' => 'Api'], function () {
 Route::group(['middleware' => 'auth:sanctum'], static function () {
     Route::get('/cart', [ClientController::class,'cart']);
     Route::get('/shop', [ClientController::class, 'shop']);
-    Route::get('/',[ClientController::class, 'home']);
+    Route::get('/profile', [ClientController::class, 'profile']); 
+
 
 });
 /* ->middleware('auth:sanctum') */;
+/* Route::get('/profile', [ClientController::class,'profile']);
+ */Route::get('/',[ClientController::class, 'home']);
+
 Route::get('/checkout', 'ClientController@checkout');
 Route::get('/login', 'ClientController@login');
 Route::get('/signup', 'ClientController@signup');
@@ -83,7 +83,6 @@ Route::post('/accsesaccount', 'ClientController@accsesaccount');
 Route::get('/logout', 'ClientController@logout');
 Route::get('/contactus', 'ClientController@contactus');
 Route::post('/datacontact', 'ClientController@datacontact');
-Route::get('/profile', 'ClientController@profile');
 
 
 /* Route::get('/about', 'ClientController@about'); 

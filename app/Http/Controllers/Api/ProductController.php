@@ -3,25 +3,19 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ProductResource;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use App\Product;
-use App\Http\Resources\ProductResource;
-use App\Category;
-use App\Cart;
-use Illuminate\Support\Facades\DB;
-
-
-
 
 class ProductController extends Controller
 {
-    public function products(){
+    public function products()
+    {
         $products = Product::get();
 
         return ProductResource::collection($products);
     }
-
 
     public function delete_product($id)
     {
@@ -29,7 +23,7 @@ class ProductController extends Controller
         $product->delete();
         return new ProductResource($product);
     }
-    
+
     public function activate_product($id)
     {
         $product = Product::findOrFail($id);
@@ -40,7 +34,7 @@ class ProductController extends Controller
 
     public function unactivate_product($id)
     {
-       
+
         $product = Product::findOrFail($id);
         $product->status = 0;
         $product->update();
@@ -53,9 +47,8 @@ class ProductController extends Controller
         $this->validate($request, [
             'product_name' => 'required',
             'product_price' => 'required',
-            'product_image' => 'image|nullable|max:1999'
+            'product_image' => 'image|nullable|max:1999',
         ]);
-
 
         if ($request->input('product_category')) {
 
@@ -89,18 +82,39 @@ class ProductController extends Controller
             return new ProductResource($product);
         } else {
             // return redirect('/addproduct')->with('status1', 'Do select the category please');
-            return  'select category please';
+            return 'select category please';
 
         }
     }
 
-    // public function editproduct(Request $request, Product $id)
-    // {
+    public function editproduct(Request $request, Product $id)
+    {
+        $this->validate($request, [
+            'product_name' => 'required',
+            'product_price' => 'required',
+            'product_image' => 'image|nullable|max:1999',
+        ]);
 
-    //     $id->update($request->all());
+        $product = Product::findOrFail($request->$id);
+        $product->product_name = $request->input('product_name');
+        $product->product_price = $request->input('product_price');
+        $product->product_category = $request->input('product_category');
+        if ($request->hasFile('product_image')) {
+            $fileNameWithExt = $request->file('product_image')->getClientOriginalName();
+            $fileName = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            $extention = $request->file('product_image')->getClientOriginalExtension();
+            $fileNameToStore = $fileName . '_' . time() . '.' . $extention;
+            $path = $request->file('product_image')->storeAs('public/product_images', $fileNameToStore);
+            $oldimage = Product::findOrFail($request->input('id'));
+            if ($oldimage->product_image != 'noimage.jpg') {
+                Storage::delete('public/product_images/' . $oldimage->product_image);
+            }
+            $product->product_image = $fileNameToStore;
+        }
+        $product->update();
+        return $product;
 
-    //     return response()->json($id, 200);
-    // }
+    }
 
     // public function addToCart($id)
     // {
@@ -113,8 +127,4 @@ class ProductController extends Controller
     //     return redirect('/shop');
     // }
 
-    
-
-    
 }
-
