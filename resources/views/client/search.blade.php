@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-returns and exchange
+search
 @endsection
 
 @section('content')

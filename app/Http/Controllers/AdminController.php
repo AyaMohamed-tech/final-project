@@ -173,7 +173,7 @@ class AdminController extends Controller
     public function search()
     {
         $data= product::
-        where('name' ,'like' , '%'.$req->input('quey'). '%')->get();
+        where('name' ,'like' , '%'.$req->input('query').'%')->get();
         return view('search' , ['products'=>$data]);
     }
 

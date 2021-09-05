@@ -48,7 +48,11 @@ Route::post('/edit_slider/{id}', [SliderController::class, 'edit_slider']);
 
 //product controller
 Route::get('/products', [ProductController::class, 'products']);
+<<<<<<< HEAD
+Route::put('/saveproduct', [ProductController::class, 'saveproduct']); 
+=======
 Route::put('/saveproduct/{id}', [ProductController::class, 'saveproduct']);
+>>>>>>> 392eb8cb9c47ac8fb2557bc60e000a9ac5d91cd0
 Route::put('/edit_product/{id}', [ProductController::class, 'editproduct']); //->1
 Route::delete('/delete_product/{id}', [ProductController::class, 'delete_product']);
 Route::get('/activate_product/{id}', [ProductController::class, 'activate_product']);
