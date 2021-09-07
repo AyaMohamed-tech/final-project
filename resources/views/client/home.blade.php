@@ -7,14 +7,17 @@
 @section('content')
 
     <section id="home-section" class="hero">
-        <div class="home-slider owl-carousel">
+       <!--  <div class="home-slider owl-carousel"> -->
 
 
             <!-- -----------viewing slider dynamically---------- -->
             @foreach ($sliders as $slider)
+            <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt="">
+            
                 <div class="slider-item"
                     style="background-image: url(/storage/slider_images/{{ $slider->slider_image }});">
                     <div class="overlay"></div>
+                    <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt="">
                     <div class="container">
                         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 

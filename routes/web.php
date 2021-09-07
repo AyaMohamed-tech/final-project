@@ -48,7 +48,7 @@ Route::get('/returns', 'ClientController@returns')->name('returns'); //---------
 
 
 //admin group
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin' , 'middleware' => ['can:isAdmin']], function () {
     Route::get('/view_pdf/{id}', 'PdfController@viewpdf');
 
 
@@ -56,9 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/orders', 'AdminController@orders');
     Route::get('/new_orders', 'AdminController@new_orders');
     Route::get('/delivered/{id}', 'AdminController@delivered');
-    /*  Route::get('/loginadmin', 'AdminController@login');
-    Route::get('/signupadmin', 'AdminController@signup');
- */
+    
 
     // ----------------- clients route-------------------------------
     Route::get('/clients', 'AdminController@clients');
@@ -102,15 +100,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/activate_slider/{id}', 'SliderController@activate_slider');
 });
 
-/* Route::get('/admin', 'AdminController@dashboard');
-Route::get('/orders', 'AdminController@orders');
-Route::get('/new_orders', 'AdminController@new_orders');
-Route::get('/delivered/{id}', 'AdminController@delivered');*/
-Route::get('/loginadmin', 'AdminController@login');
-Route::get('/signupadmin', 'AdminController@signup');
-Route::post('/createaccountadmin', 'AdminController@createaccount');
-Route::post('/accsesaccountadmin', 'AdminController@accsesaccount');
-Route::get('/logoutadmin', 'AdminController@logout');
+
 // ----------------- clients route-------------------------------
 
 
@@ -122,6 +112,12 @@ Route::get('/view_by_cat/{name}', 'CategoryController@view_by_cat');
 /* product*/
 
 Route::get('/addToCart/{id}', 'ProductController@addToCart');
+Route::fallback(function () {
+
+    return view('client.notFound');
+
+});
+
 
 
 

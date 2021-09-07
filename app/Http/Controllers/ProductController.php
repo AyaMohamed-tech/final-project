@@ -18,19 +18,14 @@ class ProductController extends Controller
 
     function addproduct()
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+        
         $categories = Category::All()->pluck('category_name', 'category_name');
         return view('admin.addproduct')->with('categories', $categories);
     }
 
     public function saveproduct(Request $request)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
-
+       
         $this->validate($request, [
             'product_name' => 'required',
             'product_price' => 'required',
@@ -68,17 +63,15 @@ class ProductController extends Controller
 
             $product->save();
 
-            return redirect('/addproduct')->with('status', 'The ' . $product->product_name . ' Product has been saved successfully');
+            return redirect('/admin/addproduct')->with('status', 'The ' . $product->product_name . ' Product has been saved successfully');
         } else {
-            return redirect('/addproduct')->with('status1', 'Do select the category please');
+            return redirect('/admin/addproduct')->with('status1', 'Do select the category please');
         }
     }
 
     public function products()
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+        
         $products = product::get();
         return view('admin.products')->with('products', $products);
     }
@@ -93,9 +86,7 @@ class ProductController extends Controller
 
     public function updateproduct(Request $request)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+       
         $this->validate($request, [
             'product_name' => 'required',
             'product_price' => 'required',
@@ -124,9 +115,7 @@ class ProductController extends Controller
 
     public function delete_product($id)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+       
         $product = Product::findOrFail($id);
         if ($product->product_image != 'noimage.jpg') {
             Storage::delete('/public/product_images/' . $product->product_image);
@@ -137,9 +126,7 @@ class ProductController extends Controller
 
     public function activate_product($id)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+      
         $product = Product::findOrFail($id);
         $product->status = 1;
         $product->update();
@@ -148,9 +135,7 @@ class ProductController extends Controller
 
     public function unactivate_product($id)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+      
         $product = Product::findOrFail($id);
         $product->status = 0;
         $product->update();

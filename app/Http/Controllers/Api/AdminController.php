@@ -1,70 +1,72 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+
+use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
-
 use App\Admin;
-use Illuminate\Http\Request;
 use App\Order;
 use App\Client;
 use App\Contact;
 use App\User;
-use App\Product;
-
+use App\Http\Resources\AdminResource;
+use App\Http\Resources\ClientsResource;
+use App\Http\Resources\ContactResource;
+use App\Http\Resources\OrdersResource;
 use PhpParser\Node\Expr\AssignOp\Concat;
 
 class AdminController extends Controller
 {
-    public function dashboard()
-    {
-       
-        return view('admin.dashboard');
-    }
-
-
+    // public function dashboard()
+    // {
+        
+    //     return view('admin.dashboard');
+    // }
 
     public function orders()
     {
-        
+       
         // $orders = Order::get();
         $orders = Order::where('status', '1')->get();
         $orders->transform(function ($order, $key) {
             $order->cart = unserialize($order->cart);
             return $order;
         });
-        return view('admin.orders')->with('orders', $orders);
+        return OrdersResource::collection($orders);
     }
 
     public function new_orders()
     {
-    
+        
 
         $orders = Order::where('status', '0')->get();
         $orders->transform(function ($order, $key) {
             $order->cart = unserialize($order->cart);
             return $order;
         });
-        return view('admin.new_orders')->with('orders', $orders);
+        return OrdersResource::collection($orders);
     }
     public function delivered($id)
     {
-        $order = Order::findOrFail($id);
+        $order = Order::find($id);
         $order->status = 1;
         $order->update();
-        return redirect('/admin/orders')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
+        return new OrdersResource($order);
     }
     //==========================================================
-    public function login()
-    {
-        return view('admin.loginadmin');
-    }
-    public function signup()
-    {
-        return view('admin.signupadmin');
-    }
+    // public function login()
+    // {
+    //     return view('admin.loginadmin');
+    // }
+    // public function signup()
+    // {
+    //     return view('admin.signupadmin');
+    // }
     public function createaccount(Request $request)
     {
 
@@ -78,8 +80,8 @@ class AdminController extends Controller
 
         $admin->save();
 
-        //    return back()->with('status' , 'Your account has been created successfully');
-        return redirect('/loginadmin');
+        return new AdminResource($admin);
+        
     }
 
     public function accsesaccount(Request $request)
@@ -93,8 +95,7 @@ class AdminController extends Controller
         if ($admin) {
             if (Hash::check($request->input('password'), $admin->password)) {
                 Session::put('admin', $admin);
-                return redirect('/admin');
-                //return back()->with('status','Your Email Is ' .Session::get('client')->email);
+                return new AdminResource($admin);
 
             } else {
                 return back()->with('error', 'Wrong Password or Email !');
@@ -104,64 +105,52 @@ class AdminController extends Controller
         }
     }
 
-    public function logout()
-    {
-        Session::forget('admin');
-        return back();
-    }
+    // public function logout()
+    // {
+    //     Session::forget('admin');
+    //     return back();
+    // }
 
     // ----------------clients action-----------------
-    public function clients()
-    {
-        $users = User::get();
+    public function clients(){
+        $clients = User::get();
+        return ClientsResource::collection($clients);
 
-        return view('admin.clients')->with('users', $users);
     }
-
     public function activate_client($id)
     {
-      
-        $user = User::findOrFail($id);
-        $user->status = 1;
-        $user->delete();
-        return redirect('/admin/clients')->with('status', 'The ' . $user->name . ' Client status has been Activated Successfuly');
+        
+        $client = Client::find($id);
+        $client->status = 1;
+        $client->update();
+        return new ClientsResource($client) ;
     }
-
     public function unactivate_client($id)
     {
-      
-        $user = User::findOrFail($id);
-        $user->status = 0;
-        $user->update();
-        return redirect('/admin/clients')->with('status', 'The ' . $user->name . ' Client status has been Unactivated Successfuly');
+       
+        $client = Client::find($id);
+        $client->status = 0;
+        $client->update();
+        return new ClientsResource($client) ;
     }
-
     //---------------usersMessages------------------------
 
-    public function usersmessages()
-    {
+    public function usersmessages(){
         $contacts = Contact::get();
 
-        return view('admin.usersmessages')->with('contacts', $contacts);
+        return ContactResource::collection($contacts);
     }
 
-    public function delete_message($id)
-    {
+    public function delete_message($id){
        
-        $contact = Contact::findOrFail($id);
+
+        $contact = Contact::find($id);
 
         $contact->delete();
 
-
-        return redirect('/admin/usersmessages')->with('status', 'The Message has been deleted successfully');
+       
+       return new ContactResource($contact ) ;
     }
 
-
-    public function search()
-    {
-        $data= product::
-        where('name' ,'like' , '%'.$req->input('query').'%')->get();
-        return view('search' , ['products'=>$data]);
-    }
 
 }
