@@ -87,7 +87,7 @@ class ProductController extends Controller
         }
     }
 
-    public function editproduct(Request $request, Product $id)
+    public function editproduct(Request $request, $id)
     {
         $this->validate($request, [
             'product_name' => 'required',
@@ -95,7 +95,7 @@ class ProductController extends Controller
             'product_image' => 'image|nullable|max:1999',
         ]);
 
-        $product = Product::findOrFail($request->$id);
+        $product = Product::findOrFail($id);
         $product->product_name = $request->input('product_name');
         $product->product_price = $request->input('product_price');
         $product->product_category = $request->input('product_category');
@@ -112,7 +112,7 @@ class ProductController extends Controller
             $product->product_image = $fileNameToStore;
         }
         $product->update();
-        return $product;
+        return new ProductResource($product);
 
     }
 

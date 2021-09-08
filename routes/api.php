@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SliderController;
 use App\Http\Controllers\Api\ClientController;
+use App\Http\Controllers\Api\AdminController;
+
 
 use App\User;
 use Illuminate\Support\Facades\Hash;
@@ -26,70 +28,80 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//category
-Route::get('/categories', [CategoryController::class, 'categories']);
-Route::delete('/delete_category/{id}', [CategoryController::class, 'delete']);
-Route::post('/savecategory', [CategoryController::class, 'savecategory']);
-Route::put('/edit_category/{id}', [CategoryController::class, 'edit']);
-Route::get('/view_by_cat/{name}', [CategoryController::class, 'view_by_cat']);
 
-
-
-
-//slider
-Route::get('/sliders', [SliderController::class, 'sliders']);
-Route::get('/showsliders/{id}', [SliderController::class, 'showsliders']);
-Route::delete('/delete_slider/{id}', [SliderController::class, 'delete_slider']);
-Route::post('/saveslider', [SliderController::class, 'saveslider']);
-
-Route::post('/edit_slider/{id}', [SliderController::class, 'edit_slider']);
-
-
-
-//product controller
-Route::get('/products', [ProductController::class, 'products']);
-Route::put('/saveproduct/{id}', [ProductController::class, 'saveproduct']);
-Route::put('/edit_product/{id}', [ProductController::class, 'editproduct']); //->1
-Route::delete('/delete_product/{id}', [ProductController::class, 'delete_product']);
-Route::get('/activate_product/{id}', [ProductController::class, 'activate_product']);
-Route::get('/unactivate_product/{id}', [ProductController::class, 'unactivate_product']);
-Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->2
-
-//***********************    start of clinet controller  *****************************
 Route::group(['namespace' => 'Api'], function () {
     
-});//->middleware('auth:sanctum')
-Route::group(['middleware' => 'auth:sanctum'], static function () {
-    Route::get('/cart', [ClientController::class,'cart']);
+});
+
+Route::group(['middleware' => 'auth:sanctum' ,'can:isAdmin'], static function () {
+    /* Route::get('/cart', [ClientController::class,'cart']);
     Route::get('/shop', [ClientController::class, 'shop']);
     Route::get('/profile', [ClientController::class, 'profile']); 
+ */
+
+    /**************admin************ */
+
+    //category
+    Route::get('/categories', [CategoryController::class, 'categories']);
+    Route::delete('/delete_category/{id}', [CategoryController::class, 'delete']);
+    Route::post('/savecategory', [CategoryController::class, 'savecategory']);
+    Route::put('/edit_category/{id}', [CategoryController::class, 'edit']);
+    Route::get('/view_by_cat/{name}', [CategoryController::class, 'view_by_cat']);
+
+    //slider
+    Route::get('/sliders', [SliderController::class, 'sliders']);
+    Route::get('/showsliders/{id}', [SliderController::class, 'showsliders']);
+    Route::delete('/delete_slider/{id}', [SliderController::class, 'delete_slider']);
+    Route::post('/saveslider', [SliderController::class, 'saveslider']);
+    Route::post('/edit_slider/{id}', [SliderController::class, 'edit_slider']);
+
+
+    //product controller
+    Route::get('/products', [ProductController::class, 'products']);
+    Route::post('/saveproduct', [ProductController::class, 'saveproduct']);
+    Route::post('/edit_product/{id}', [ProductController::class, 'editproduct']); //->1
+    Route::delete('/delete_product/{id}', [ProductController::class, 'delete_product']);
+    Route::post('/activate_product/{id}', [ProductController::class, 'activate_product']);
+    Route::post('/unactivate_product/{id}', [ProductController::class, 'unactivate_product']);
+
+
+
+    Route::get('/orders', [AdminController::class, 'orders']);
+    Route::get('/new_orders', [AdminController::class, 'new_orders']);
+    Route::get('/delivered/{id}',  [AdminController::class, 'delivered']);
+
+
+    
+    Route::get('/clients',[AdminController::class, 'clients']);
+    //Route::get('/activate_client/{id}', [AdminController::class, 'activate_client']);
+    //Route::get('/unactivate_client/{id}', [AdminController::class, 'unactivate_client']);
+    Route::get('/usersmessages',[AdminController::class, 'usersmessages']);
+    Route::delete('/delete_message/{id}', [AdminController::class, 'delete_message']);
 
 
 });
-/* ->middleware('auth:sanctum') */;
-/* Route::get('/profile', [ClientController::class,'profile']);
- */Route::get('/',[ClientController::class, 'home']);
 
-Route::get('/checkout', 'ClientController@checkout');
-Route::get('/login', 'ClientController@login');
-Route::get('/signup', 'ClientController@signup');
-Route::post('/updateqty', 'ClientController@updateqty');
-Route::get('/removeitem/{id}', 'ClientController@removeitem');
-Route::post('postcheckout', 'ClientController@postcheckout');
+ // ----------------- clients route-------------------------------
+Route::get('/',[ClientController::class, 'home']);
+Route::get('/shop', [ClientController::class, 'shop']);
+
+Route::group(['middleware' => 'auth:sanctum' ,'can:isUser'], static function () {
+
+    Route::get('/cart', [ClientController::class,'cart']);// return 1   
+    Route::get('/profile', [ClientController::class, 'profile']); 
+});
 
 
-Route::post('/createaccount', 'ClientController@createaccount');
-Route::post('/accsesaccount', 'ClientController@accsesaccount');
-Route::get('/logout', 'ClientController@logout');
-Route::get('/contactus', 'ClientController@contactus');
+Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->2
+//Route::post('/updateqty', 'ClientController@updateqty');
+//Route::get('/removeitem/{id}', 'ClientController@removeitem');
+//Route::post('postcheckout', 'ClientController@postcheckout');
 Route::post('/datacontact', 'ClientController@datacontact');
 
 
-/* Route::get('/about', 'ClientController@about'); 
-Route::get('/privacypolicy', 'ClientController@privacypolicy');
-Route::get('/terms', 'ClientController@terms'); 
-Route::get('/shipping', 'ClientController@shipping'); 
-Route::get('/returns', 'ClientController@returns'); */
+//Route::get('/admin',  [AdminController::class, 'dashboard']);
+
+
 
 
 Route::post('/sanctum/token', function (Request $request) {
@@ -110,4 +122,4 @@ Route::post('/sanctum/token', function (Request $request) {
     return $user->createToken($request->device_name)->plainTextToken;
 });
 
-//***********************    end of clinet controller    ******************************
+

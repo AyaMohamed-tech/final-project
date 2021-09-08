@@ -40,7 +40,7 @@
                                         </td>
                                         <td>{{ $order->payment_id }}</td>
                                         <td>
-                                            <button class="btn btn-outline-primary"
+                                            <button class="btn btn-outline-primary" 
                                                 onclick="window.location = '{{ url('/admin/view_pdf/' . $order->id) }}'">View</button>
                                         </td>
                                     </tr>

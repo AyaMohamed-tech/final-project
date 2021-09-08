@@ -48,10 +48,10 @@
                            @endif
                            <td>
                            @if ($user->status == 1)
-                                                <a href="/admin/unactivate_user/{{ $user->id }}"
+                                                <a href="/admin/unactivate_client/{{ $user->id }}"
                                                     class="btn btn-outline-warning">Unactivate</a>
                                             @else
-                                                <a href="/admin/activate_user/{{ $user->id }}"
+                                                <a href="/admin/activate_client/{{ $user->id }}"
                                                     class="btn btn-outline-success">activate</a>
                                             @endif
                            </td>

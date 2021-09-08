@@ -9,10 +9,13 @@ use App\Http\Resources\CategoryResource;
 use App\Http\Resources\HomeResource;
 use App\Http\Resources\ProductResource;
 use App\Http\Resources\SliderResource;
+use App\Http\Resources\ContactResource;
+
 use App\Product;
 use App\Slider;
 use App\Order;
 use App\User;
+use App\Contact;
 
 
 use Illuminate\Http\Request;
@@ -75,5 +78,27 @@ class ClientController extends Controller
         return $orders;
        
     }
+    public function datacontact(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|min:4',
+            'email' => 'email|required|unique:contacts',
+            'subject' => 'required|min:4',
+            'message' => 'required|min:5'
+
+        ]);
+        $contact = new Contact();
+        $contact->name = $request->input('name');
+        $contact->email = $request->input('email');
+        $contact->subject = $request->input('subject');
+        $contact->message = $request->input('message');
+
+        $contact->save();
+        return new ContactResource($contact);
+            
+        ;
+    }
+
+    
 
 }

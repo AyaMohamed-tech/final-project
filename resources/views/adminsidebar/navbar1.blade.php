@@ -24,7 +24,11 @@
               </a> -->
             </div>
           </li>
-          <li class="nav-item active"><a href="{{URL::to('/logoutadmin')}}" class="nav-link"><span class="fa fa-user"></span>Logout</a></li>
+          <li class="nav-item active"><a  href="{{ route('logout') }}" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="nav-link"><span class="fa fa-user"></span>Logout</a></li>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+					@csrf
+				</form>
 
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

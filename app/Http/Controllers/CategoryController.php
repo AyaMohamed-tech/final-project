@@ -15,9 +15,7 @@ class CategoryController extends Controller
 {
     public function addcategory()
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+       
         return view('admin.addcategory');
     }
     public function savecategory(Request $request)
@@ -54,26 +52,20 @@ class CategoryController extends Controller
     }
     public function categories()
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+       
         $categories = Category::get();
         return view('admin.categories')->with('categories', $categories);
     }
     public function edit($id)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+       
         $category = Category::findOrFail($id);
         return view('admin.editcategory')->with('category', $category);
     }
 
     public function updatecategory(Request $request)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+        
         $this->validate($request, [
             'category_name' => 'required',
             'category_image' => 'image|nullable|max:1999'
@@ -109,9 +101,7 @@ class CategoryController extends Controller
     }
     public function delete($id)
     {
-        if (!Session::has('admin')) {
-            return redirect('/loginadmin');
-        }
+       
         $category = Category::findOrFail($id);
         if ($category->product_image != 'noimage.jpg') {
             Storage::delete('/public/category_images/' . $category->category_image);
