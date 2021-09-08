@@ -13,8 +13,7 @@
   <div class="card-body">
     <!-- <h5 class="card-title">PERSONAL DATA</h5> -->
   
-    <p class="card-text">   full name :{{ auth()->user()->name }} <br> email adress :{{ auth()->user()->email }}
-                              </p>     </p>
+    <p class="card-text">   full name :{{ auth()->user()->name }} <br> email adress :{{ auth()->user()->email }} </p>  
     <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
   </div>
 </div>
@@ -29,7 +28,7 @@
         </div>
     </div> -->
 
-    <div class="container mt-4">
+    <!-- <div class="container mt-4"> -->
         <!-- <div class="row">
 
             <div class="col-md-4">

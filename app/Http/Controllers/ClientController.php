@@ -248,4 +248,11 @@ class ClientController extends Controller
         });
         return view('client.profile')->with(['users' => $users, 'orders' => $orders]);
     }
+
+    public function search(Request $req)
+    {
+        $data= product::
+        where('product_name' ,'like' , '%'.$req->input('query').'%')->get();
+        return view('client.search' , ['products'=>$data]);
+    }
 }

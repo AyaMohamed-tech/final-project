@@ -12,10 +12,10 @@ search
         
         @foreach($products as $item)
         <div class ="searched-item">
-            <a href="detail/{{$item['id']}}">
-            <img class="trending-image" src="{{$item['gallery']}}">
+            <a href="{{$item['id']}}">
+            <!-- <img class="trending-image" src="{{$item['gallery']}}"> -->
             <div class="">
-                <h3>{{$item['name']}}</h3>
+                <h3>{{$item['item_name']}}</h3>
             </a>
         </div>
 
