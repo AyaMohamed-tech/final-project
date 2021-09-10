@@ -19,7 +19,7 @@
                         <table id="order-listing" class="table">
                             <thead>
                                 <tr>
-                                    <th>Id #</th>
+                                    <!-- <th>Id #</th> -->
                                     <th>User name</th>
                                     <th>Order id</th>
                                 </tr>
@@ -27,7 +27,7 @@
                             <tbody>
                                 @foreach($notifications as $notification)
                                 <tr>
-                                    <td>{{$increment}}</td>
+                                    <!-- <td>{{$increment}}</td> -->
                                     <td>{{$notification->data['name']}}</td>
                                     <td>{{$notification->data['id']}}</td>
                                 </tr>
