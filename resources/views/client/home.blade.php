@@ -6,6 +6,15 @@
 
 @section('content')
 
+<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand">Find your product</a>
+	<form class="form-inline" action="{{route('search')}}">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+		 name="query">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+</nav>
+
     <section id="home-section" class="hero">
         <div class="home-slider owl-carousel">
 
@@ -14,7 +23,7 @@
             @foreach ($sliders as $slider)
 <!--             <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt="">
  -->
-             <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt="">
+             <!-- <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt=""> -->
                 <div class="slider-item"
                     style="background-image: url(/storage/slider_images/{{ $slider->slider_image }});">
                     <div class="overlay"></div>
@@ -117,7 +126,7 @@
         <div class="container">
             <div class="row justify-content-center mb-3 pb-3">
                 <div class="col-md-12 heading-section text-center ftco-animate">
-                    <h2 class="mb-4">Our Products</h2>
+                    <h2 class="mb-4">Best Seller Products</h2>
                     <span class="subheading">price for 1 kilo.</span>
                 </div>
             </div>

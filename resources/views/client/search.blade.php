@@ -6,20 +6,51 @@ search
 
 @section('content')
 
+<!-- <div class ="container">
 <div class="col-sm-4">
     <div class="trending-wr apper">
         <h4>result for search</h4>
         
         @foreach($products as $item)
         <div class ="searched-item">
-            <a href="{{$item['id']}}">
-            <!-- <img class="trending-image" src="{{$item['gallery']}}"> -->
             <div class="">
-                <h3>{{$item['item_name']}}</h3>
-            </a>
+            <h5>product name </h5>    {{$item->product_name}}<br>
+            <h5>product price </h5> {{$item->product_price}}<br>
+            </div>  
         </div>
 
-@endforeach
+        @endforeach
      </div>
 </div>
+</div><br> -->
+
+<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand">Find your product</a>
+	<form class="form-inline" action="{{route('search')}}">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+		 name="query">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+</nav>
+
+
+<div class ="container my-5">
+<div class="card border-success mb-3" style="max-width: 18rem;">
+  <div class="card-header bg-transparent border-success">product details</div>
+  @foreach($products as $item)
+  <div class="card-body text-success">
+    <!-- {{$item->product_image}} -->
+    <h5 class="card-title">PRODUCT NAME</h5>
+    {{$item->product_name}}
+    <h5 class="card-title">PRODUCT PRICE</h5>
+    {{$item->product_price}}
+    <h5 class="card-title">PRODUCT CATEGORY</h5>
+    {{$item->product_category}}
+  
+  </div>
+  @endforeach
+</div>
+</div>
+
+
 @endsection

@@ -6,6 +6,15 @@
 
 @section('content')
 
+<nav class="navbar navbar-light bg-light">
+	<a class="navbar-brand">Find your product</a>
+	<form class="form-inline" action="{{route('search')}}">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+		 name="query">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+</nav>
+
     <div class="hero-wrap hero-bread" style="background-image: url('/frontend/images/bg_1.jpg');">
         <div class="container">
             <div class="row no-gutters slider-text align-items-center justify-content-center">

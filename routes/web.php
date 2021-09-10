@@ -64,7 +64,6 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['can:isAdmin']], function (
     Route::get('/unactivate_client/{id}', 'AdminController@unactivate_client');
     Route::get('/usersmessages', 'AdminController@usersmessages');
     Route::get('/delete_message/{id}', 'AdminController@delete_message');
-    Route::get('/search', 'ClientController@search')->name('search');
 
     // categories
     Route::get('/addcategory', 'CategoryController@addcategory');
@@ -124,3 +123,5 @@ Route::fallback(function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/search', 'ClientController@search')->name('search');

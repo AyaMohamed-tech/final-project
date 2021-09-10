@@ -156,4 +156,5 @@ class SliderController extends Controller
 
         return redirect('/admin/sliders')->with('status','The Slider status has been activated successfully');
     }
+
 }
