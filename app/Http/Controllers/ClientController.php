@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Expr\AssignOp\Concat;
+use App\Notifications\OrderDelivered;
 
 class ClientController extends Controller
 {
@@ -252,10 +253,22 @@ class ClientController extends Controller
   
     public function search(Request $req)
     {
-        $data= product::
-        where('product_name' ,'like' , '%'.$req->input('query').'%')->get();
+        $data= product::where('product_name' ,'like' , '%'.$req->input('query').'%')->get();
+        
         return view('client.search' , ['products'=>$data]);
-        }
+    }
 
+    public function delivered($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = 1;
+        $order->update();
+
+        $admin = User::where('role', 'admin')->first();
+        
+        $admin->notify(new OrderDelivered($order));
+
+        return redirect('/profile')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
+    }
 
 }

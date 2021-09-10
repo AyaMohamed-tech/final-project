@@ -42,9 +42,7 @@
                                         <td>
                                             <button class="btn btn-outline-primary"
                                                 onclick="window.location = '{{ url('/admin/view_pdf/' . $order->id) }}'">View</button>
-                                            <button class="btn btn-outline-success"
-                                                onclick="window.location = '{{ url('/admin/delivered/' . $order->id) }}'">Delivered</button>
-
+                                            
                                         </td>
 
                                     </tr>

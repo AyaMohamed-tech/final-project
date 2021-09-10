@@ -49,13 +49,7 @@ class AdminController extends Controller
         });
         return view('admin.new_orders')->with('orders', $orders);
     }
-    public function delivered($id)
-    {
-        $order = Order::findOrFail($id);
-        $order->status = 1;
-        $order->update();
-        return redirect('/admin/orders')->with('status', 'The ' . $order->id . ' Order has been deliverd Successfuly');
-    }
+
     //==========================================================
     public function login()
     {

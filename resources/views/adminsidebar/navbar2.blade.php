@@ -37,6 +37,7 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/new_orders') }}">New Orders</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/clients')}}">Clients</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/usersmessages')}}">UsersMessages</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/notifications')}}">Notifications</a></li>
                 </ul>
             </div>
         </li>

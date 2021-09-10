@@ -26,7 +26,7 @@ Route::get('/signup', 'ClientController@signup')->name('signup');
 Route::post('/updateqty', 'ClientController@updateqty')->name('updateqty');
 Route::get('/removeitem/{id}', 'ClientController@removeitem')->name('removeitem');
 Route::post('postcheckout', 'ClientController@postcheckout')->name('postcheckout');
-
+Route::get('/orders/{id}/delivered', 'ClientController@delivered');
 
 Route::post('/createaccount', 'ClientController@createaccount');
 Route::post('/accsesaccount', 'ClientController@accsesaccount');
@@ -97,6 +97,8 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['can:isAdmin']], function (
     Route::get('/delete_slider/{id}', 'SliderController@delete_slider');
     Route::get('/unactivate_slider/{id}', 'SliderController@unactivate_slider');
     Route::get('/activate_slider/{id}', 'SliderController@activate_slider');
+
+    Route::get('/notifications', 'NotificationController@index');
 });
 
 

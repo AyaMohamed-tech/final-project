@@ -35,21 +35,27 @@ search
 
 
 <div class ="container my-5">
-<div class="card border-success mb-3" style="max-width: 18rem;">
-  <div class="card-header bg-transparent border-success">product details</div>
-  @foreach($products as $item)
-  <div class="card-body text-success">
-    <!-- {{$item->product_image}} -->
-    <h5 class="card-title">PRODUCT NAME</h5>
-    {{$item->product_name}}
-    <h5 class="card-title">PRODUCT PRICE</h5>
-    {{$item->product_price}}
-    <h5 class="card-title">PRODUCT CATEGORY</h5>
-    {{$item->product_category}}
+  @forelse($products as $item)
+  <div class="card border-success mb-3" style="max-width: 18rem;">
+    <!-- <div class="card-header bg-transparent border-success">product details</div> -->
+      <div class="card-body text-success">
+      <!-- <h5> product details</h5> -->
+        <img src="{{asset('storage/product_images/' . $item->product_image)}}" alt="">
+        <h5 class="card-title">PRODUCT NAME</h5>
+        {{$item->product_name}}
+        <h5 class="card-title">PRODUCT PRICE</h5>
+        {{$item->product_price}}
+        <h5 class="card-title">PRODUCT CATEGORY</h5>
+        {{$item->product_category}}
+      
+      </div>
+    </div>
+  <!-- </div> -->
+  @empty
+  <span>0 Search results</span>
+  @endforelse
+
   
-  </div>
-  @endforeach
-</div>
 </div>
 
 

@@ -108,6 +108,13 @@
                                                 @endforeach
                                             </td>
                                             <td>{{ $order->payment_id }}</td>
+                                            <td>
+                                                @if($order->status)
+                                                <span>Delivered successfully!</span>
+                                                @else 
+                                                <a href="{{url('/orders/' . $order->id . '/delivered')}}">Delivered</a>
+                                                @endif
+                                            </td>
                                         </tr>
                                         {{ Form::hidden('', $increment = $increment + 1) }}
                                     @endforeach
