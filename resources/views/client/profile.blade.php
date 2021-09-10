@@ -94,6 +94,7 @@
                                         <th>Address</th>
                                         <th>Cart</th>
                                         <th>Payment_id</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
