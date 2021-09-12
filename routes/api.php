@@ -82,7 +82,7 @@ Route::group(['middleware' => ['auth:sanctum' ,'can:isAdmin']], static function 
 Route::get('/',[ClientController::class, 'home']);
 Route::get('/shop', [ClientController::class, 'shop']);
 
-Route::group(['middleware' => ['auth:sanctum' ,'can:isUser'], static function () {
+Route::group(['middleware' => ['auth:sanctum' ,'can:isUser']], static function () {
 
    // Route::get('/cart', [ClientController::class,'cart']);// return 1   
     Route::get('/profile', [ClientController::class, 'profile']); 

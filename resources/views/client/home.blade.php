@@ -21,14 +21,12 @@
 
             <!-- -----------viewing slider dynamically---------- -->
             @foreach ($sliders as $slider)
-<!--             <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt="">
- -->
-             <!-- <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt=""> -->
+
                 <div class="slider-item"
                     style="background-image: url(/storage/slider_images/{{ $slider->slider_image }});">
                     <div class="overlay"></div>
                     <img src="{{ asset('storage/slider_images/'.$slider->slider_image) }}" alt="">
-                    <div class="container">
+                    <div class="container containerAbs">
                         <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
 
                             <div class="col-md-12 ftco-animate text-center">
