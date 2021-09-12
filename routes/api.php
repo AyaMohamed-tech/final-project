@@ -33,11 +33,8 @@ Route::group(['namespace' => 'Api'], function () {
     
 });
 
-Route::group(['middleware' => 'auth:sanctum' ,'can:isAdmin'], static function () {
-    /* Route::get('/cart', [ClientController::class,'cart']);
-    Route::get('/shop', [ClientController::class, 'shop']);
-    Route::get('/profile', [ClientController::class, 'profile']); 
- */
+Route::group(['middleware' => ['auth:sanctum' ,'can:isAdmin']], static function () {
+ 
 
     /**************admin************ */
 
@@ -45,7 +42,7 @@ Route::group(['middleware' => 'auth:sanctum' ,'can:isAdmin'], static function ()
     Route::get('/categories', [CategoryController::class, 'categories']);
     Route::delete('/delete_category/{id}', [CategoryController::class, 'delete']);
     Route::post('/savecategory', [CategoryController::class, 'savecategory']);
-    Route::put('/edit_category/{id}', [CategoryController::class, 'edit']);
+    Route::post('/edit_category/{id}', [CategoryController::class, 'edit']);
     Route::get('/view_by_cat/{name}', [CategoryController::class, 'view_by_cat']);
 
     //slider
@@ -85,21 +82,18 @@ Route::group(['middleware' => 'auth:sanctum' ,'can:isAdmin'], static function ()
 Route::get('/',[ClientController::class, 'home']);
 Route::get('/shop', [ClientController::class, 'shop']);
 
-Route::group(['middleware' => 'auth:sanctum' ,'can:isUser'], static function () {
+Route::group(['middleware' => ['auth:sanctum' ,'can:isUser'], static function () {
 
-    Route::get('/cart', [ClientController::class,'cart']);// return 1   
+   // Route::get('/cart', [ClientController::class,'cart']);// return 1   
     Route::get('/profile', [ClientController::class, 'profile']); 
 });
 
 
 Route::get('/addToCart/{id}', 'ProductController@addToCart');  //->2
-//Route::post('/updateqty', 'ClientController@updateqty');
-//Route::get('/removeitem/{id}', 'ClientController@removeitem');
-//Route::post('postcheckout', 'ClientController@postcheckout');
+
 Route::post('/datacontact', 'ClientController@datacontact');
 
 
-//Route::get('/admin',  [AdminController::class, 'dashboard']);
 
 
 
