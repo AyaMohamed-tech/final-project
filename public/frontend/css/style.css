@@ -13858,6 +13858,12 @@ p.copywriter {
     top: 0;
     bottom: 0;
 }
+.edit-margin-card{
+    margin: 10px 0;
+}
+.progress-bar{
+    background-color:#82ae46;
+}
 @media (max-width: 767) {
     .content-auth{
         margin: 20px 0;

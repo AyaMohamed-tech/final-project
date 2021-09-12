@@ -39,23 +39,25 @@ search
 
 
 <div class ="container my-5">
+<div class="row">
   @forelse($products as $item)
-<div class="card" style="width: 18rem;">
-  <img src="{{asset('storage/product_images/' . $item->product_image)}}" class="card-img-top" alt="...">
-  <div class="card-body">
-  <h5 class="card-title">PRODUCT NAME</h5>
-        {{$item->product_name}}
-        <h5 class="card-title">PRODUCT PRICE</h5>
-        {{$item->product_price}}
-        <h5 class="card-title">PRODUCT CATEGORY</h5>
-        {{$item->product_category}}
-  </div>
+  <div class="col-md-4 col-lg-3 col-12">
+    <div class="card edit-margin-card">
+      <img src="{{asset('storage/product_images/' . $item->product_image)}}" class="card-img-top" alt="...">
+      <div class="card-body">
+      <p class="card-title"><b>Name</b> :  {{$item->product_name}}</p>     
+      <p class="card-title"><b>Price</b> :  {{$item->product_price}}</p> 
+      <p class="card-title"><b>Category</b> : {{$item->product_category}}</p>    
+    </div>
+</div>
 </div>
 
 @empty
   <span>0 Search results</span>
   @endforelse
 </div>
+</div>
+
 
 
 

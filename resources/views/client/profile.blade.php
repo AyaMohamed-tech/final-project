@@ -137,7 +137,7 @@
 
                                                 @endif
 
-                                                <div class="progress">
+                                                
   
 
 
