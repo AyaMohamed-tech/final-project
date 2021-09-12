@@ -261,7 +261,7 @@ class ClientController extends Controller
     public function delivered($id)
     {
         $order = Order::findOrFail($id);
-        $order->status = 1;
+        $order->status = 3;
         $order->update();
 
         $admin = User::where('role', 'admin')->first();

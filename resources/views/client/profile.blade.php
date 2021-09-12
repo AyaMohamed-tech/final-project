@@ -93,7 +93,7 @@
                                         <th>Client Name</th>
                                         <th>Address</th>
                                         <th>Cart</th>
-                                        <th>Payment_id</th>
+                                        <!-- <th>Payment_id</th> -->
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -108,13 +108,40 @@
                                                     {{ $item['product_name'] . ',' }}
                                                 @endforeach
                                             </td>
-                                            <td>{{ $order->payment_id }}</td>
+                                            <!-- <td>{{ $order->payment_id }}</td> -->
                                             <td>
-                                                @if($order->status)
-                                                <span>Delivered successfully!</span>
-                                                @else 
+                                                <!-- Banned -->
+                                                @if($order->status == 0)
+                                                <span>Banned</span>
+                                                <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <!-- In progress -->
+                                                @elseif($order->status == 1)
+                                                <span>In progress</span>
+                                                <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                <!-- shipped -->
+                                                @elseif($order->status == 2) 
                                                 <a href="{{url('/orders/' . $order->id . '/delivered')}}">Delivered</a>
+                                                <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+                                                @else 
+                                                <!-- Order delivered successfully -->
+                                                <span>Delivered Successfully!</span>
+                                                <div class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                </div>
+
                                                 @endif
+
+                                                <div class="progress">
+  
+
+
+
                                             </td>
                                         </tr>
                                         {{ Form::hidden('', $increment = $increment + 1) }}

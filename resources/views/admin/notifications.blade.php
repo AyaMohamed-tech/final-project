@@ -26,7 +26,7 @@
                             </thead>
                             <tbody>
                                 @foreach($notifications as $notification)
-                                <tr>
+                                <tr class="@if($notification->id == \Session::get('id')) alert alert-danger @endif">
                                     <!-- <td>{{$increment}}</td> -->
                                     <td>{{$notification->data['name']}}</td>
                                     <td>{{$notification->data['id']}}</td>
