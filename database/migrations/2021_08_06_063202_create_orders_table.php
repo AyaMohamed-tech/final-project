@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             $table->mediumText('cart');
             $table->string('payment_id');
-            $table->integer('status')->default(0);
+            $table->integer('status')->default(0); // 0 banned -  1 in progress - 2 shipped  - 3 delivered 
             $table->timestamps();
         });
     }

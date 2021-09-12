@@ -15,15 +15,21 @@
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="{{asset('backend/images/logo_2H_tech.png')}}" alt="profile"/>
+            <button type="button" class="btn btn-primary">
+              Notifications <span class="badge badge-light">{{auth()->user()->notifications->where('read_at', null)->count()}}</span>
+              <span class="sr-only">unread messages</span>
+            </button>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <!-- <a class="dropdown-item"  href="{{URL::to('/logoutadmin')}}">
+              @foreach(auth()->user()->notifications->where('read_at', null) as $notification)
+              <a class="dropdown-item"  href="{{URL::to('/admin/notifications/' . $notification->id)}}">
                 <i class="ti-power-off text-primary"></i>
-                Logout
-              </a> -->
+                {{ $notification->data['name'] }} received order
+              </a>
+              @endforeach
             </div>
           </li>
+          
           <li class="nav-item active"><a  href="{{ route('logout') }}" onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();" class="nav-link"><span class="fa fa-user"></span>Logout</a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

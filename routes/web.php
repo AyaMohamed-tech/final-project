@@ -99,6 +99,13 @@ Route::group(['prefix' => 'admin' , 'middleware' => ['can:isAdmin']], function (
     Route::get('/activate_slider/{id}', 'SliderController@activate_slider');
 
     Route::get('/notifications', 'NotificationController@index');
+    Route::get('/notifications/{id}', 'NotificationController@show');
+
+    Route::get('orders/banned_orders', 'OrderController@banned');
+    Route::get('orders/in_progress', 'OrderController@in_progress');
+    Route::get('orders/shipped', 'OrderController@shipped');
+    Route::get('orders/delivered', 'OrderController@delivered');
+    Route::get('orders/{id}/up', 'OrderController@up');
 });
 
 

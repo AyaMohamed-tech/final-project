@@ -33,8 +33,10 @@
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/categories') }}">Categories</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/products') }}">Products</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/sliders') }}">Sliders</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/orders') }}">Orders</a></li>
-                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/new_orders') }}">New Orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/orders/banned_orders') }}">Banned orders</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/orders/in_progress') }}">Orders in progress</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/orders/shipped') }}">Orders shipped</a></li>
+                    <li class="nav-item"> <a class="nav-link" href="{{ URL::to('/admin/orders/delivered') }}">Orders delivered</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/clients')}}">Clients</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/usersmessages')}}">UsersMessages</a></li>
                     <li class="nav-item"> <a class="nav-link" href="{{URL::to('/admin/notifications')}}">Notifications</a></li>
